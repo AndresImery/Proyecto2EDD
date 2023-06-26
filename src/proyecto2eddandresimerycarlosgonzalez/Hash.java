@@ -46,8 +46,22 @@ public class Hash {
     }
     
     public void addEstado(Estado estado) {
+        int key = hashFunction(estado.getCliente().getNombre(), estado.getCliente().getApellido());
         
+        getHashtable()[key].insertLast(estado);
     }
     
+    public Estado getEstado(String name, String lastname) {
+        int key = hashFunction(name, lastname);
+        
+        Nodo<Estado> pointer = getHashtable()[key].getHead();
+        while (pointer != null) {
+            if (pointer.getElement().getCliente().getNombre().equals(name) && pointer.getElement().getCliente().getApellido().equals(lastname)) {
+                return pointer.getElement();
+            }
+            pointer = pointer.getNext();
+        }
+        return null;
+    }
     
 }
