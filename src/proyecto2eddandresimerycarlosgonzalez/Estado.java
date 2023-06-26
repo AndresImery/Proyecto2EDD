@@ -14,5 +14,36 @@ public class Estado {
     private Habitacion habitacion;
     private Cliente cliente;
     private Date llegada;
+
+    public Estado(Habitacion habitacion, Cliente cliente, Date llegada) {
+        this.habitacion = habitacion;
+        this.cliente = cliente;
+        this.llegada = llegada;
+    }
+
+    public Habitacion getHabitacion() {
+        return habitacion;
+    }
+
+    public void setHabitacion(Habitacion habitacion) {
+        this.habitacion = habitacion;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Date getLlegada() {
+        return llegada;
+    }
+
+    public void setLlegada(Date llegada) {
+        this.llegada = llegada;
+    }
+    
     
 }

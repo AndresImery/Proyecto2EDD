@@ -14,5 +14,54 @@ public class Habitacion {
     private int piso;
     private Lista<Historico> historicos;
     private Estado estado;
+
+    public Habitacion(int num, String tipo, int piso, Lista<Historico> historicos, Estado estado) {
+        this.num = num;
+        this.tipo = tipo;
+        this.piso = piso;
+        this.historicos = historicos;
+        this.estado = estado;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getPiso() {
+        return piso;
+    }
+
+    public void setPiso(int piso) {
+        this.piso = piso;
+    }
+
+    public Lista<Historico> getHistoricos() {
+        return historicos;
+    }
+
+    public void setHistoricos(Lista<Historico> historicos) {
+        this.historicos = historicos;
+    }
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+    
     
 }
