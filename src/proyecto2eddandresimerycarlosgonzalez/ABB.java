@@ -8,6 +8,6 @@ package proyecto2eddandresimerycarlosgonzalez;
  *
  * @author Carlo
  */
-public class BusquedaReserva {
+public class ABB {
     
 }
