@@ -47,7 +47,7 @@ public class Lista<T> {
      * @param element Recibe un objeto cualquiera del mismo tipo de la lista
      */
     public void insertLast(T element) {
-        Nodo<T> node = new Nodo<>(element);
+        Nodo<T> node = new Nodo<T>(T element);
         if (isEmpty()) {
             setHead(node);
         } else {
