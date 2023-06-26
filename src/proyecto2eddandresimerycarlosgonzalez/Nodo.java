@@ -12,9 +12,9 @@ public class Nodo<T> {
     private T element;
     private Nodo<T> next;
 
-    public Nodo(T element, Nodo<T> next) {
+    public Nodo(T element) {
         this.element = element;
-        this.next = next;
+        this.next = null;
     }
 
     public T getElement() {

@@ -46,7 +46,7 @@ public class Hash {
     }
     
     public void addEstado(Estado estado) {
-        //
+        
     }
     
     
