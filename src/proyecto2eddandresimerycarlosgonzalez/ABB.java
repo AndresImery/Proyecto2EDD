@@ -8,14 +8,14 @@ package proyecto2eddandresimerycarlosgonzalez;
  *
  * @author Carlo
  */
-public class ABB {
-    private NodoArbol root;
+public class ABB <T>{
+    private NodoArbol<T> root;
 
     public ABB(){
         this.root = null;
     }
     
-    public ABB(NodoArbol nodo){
+    public ABB(NodoArbol<T> nodo){
         this.root = nodo;
     }
 
@@ -28,7 +28,7 @@ public class ABB {
         this.root = root;
     }
     
-    public void insert(NodoArbol root, NodoArbol newNode) {
+    public void insert(NodoArbol<T> root, NodoArbol<T> newNode) {
         if (this.root == null) {
             this.root = newNode;
         } else {
@@ -38,7 +38,7 @@ public class ABB {
                 } else {
                     insert(root.getLeft(), newNode);
                 }
-            } else if (newNode.getTreeID() > root.getTreeID()) {
+            } else if (newNode.getTreeID().getID > root.getTreeID()) {
                 if (root.getRight() == null) {
                     root.setRight(newNode);
                 } else {
@@ -51,7 +51,7 @@ public class ABB {
     }
     
     
-    public NodoArbol search(NodoArbol aux, int treeID) {
+    public NodoArbol search(NodoArbol<T> aux, T treeID) {
         if (aux == null) return null;
         
         if (aux.getTreeID() == treeID) {
