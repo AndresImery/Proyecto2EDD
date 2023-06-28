@@ -63,7 +63,7 @@ public class ABB <T>{
         }
     }
     
-    public int getNodeLevel(NodoArbol aux, int treeID, int level) {
+    public int getNodeLevel(NodoArbol<T> aux, T treeID, int level) {
         if (aux == null) return -1;
         
         if (aux.getTreeID() == treeID) {
