@@ -94,17 +94,41 @@ public class ABB<T> {
         }
     }
     
-    public int getNodeLevel(NodoArbol<T> aux, T element, int level) {
+    public int getNodeReservaLevel(NodoArbol<Reserva> aux, Reserva element, int level) {
         if (aux == null) return -1;
         
         if (aux.getElement().getId() == element.getId()) {
             return level;
         } else if (element.getId() < aux.getElement().getId()) {
-            return getNodeLevel(aux.getLeft(), element, level + 1);
+            return getNodeReservaLevel(aux.getLeft(), element, level + 1);
         } else {
-            return getNodeLevel(aux.getRight(), element, level + 1);
+            return getNodeReservaLevel(aux.getRight(), element, level + 1);
         }
     }
+    
+    public int getNodeHabitacionLevel(NodoArbol<Habitacion> aux, Habitacion element, int level) {
+        if (aux == null) return -1;
+        
+        if (aux.getElement().getId() == element.getId()) {
+            return level;
+        } else if (element.getId() < aux.getElement().getId()) {
+            return getNodeHabitacionLevel(aux.getLeft(), element, level + 1);
+        } else {
+            return getNodeHabitacionLevel(aux.getRight(), element, level + 1);
+        }
+    }
+    
+//    public int getNodeLevel(NodoArbol<T> aux, T element, int level) {
+//        if (aux == null) return -1;
+//        
+//        if (aux.getElement().getId() == element.getId()) {
+//            return level;
+//        } else if (element.getId() < aux.getElement().getId()) {
+//            return getNodeLevel(aux.getLeft(), element, level + 1);
+//        } else {
+//            return getNodeLevel(aux.getRight(), element, level + 1);
+//        }
+//    }
     
     
     public boolean isInTheTreeReserva(NodoArbol<Reserva> aux, Reserva element) {
@@ -125,7 +149,7 @@ public class ABB<T> {
             return (isInTheTreeHabitacion(aux.getLeft(), element) || isInTheTreeHabitacion(aux.getRight(), element));
     }
     
-    public NodoArbol deleteLeft(NodoArbol<T> p) {
+    public NodoArbol deleteReservaLeft(NodoArbol<Reserva> p) {
         if (p.getLeft() != null) {
             NodoArbol aux = p.getLeft();
             p.setLeft(null);
@@ -170,28 +194,17 @@ public class ABB<T> {
     }
 
     public NodoArbol deleteReserva(NodoArbol<Reserva> p, Reserva element) {
-        if (this.root != null && getRoot().getElement().getId() == element.getId()) {
+        if (this.root != null && p.getElement().getId() == element.getId()) {
             return deleteRoot();
         } else if (p.getLeft() != null && p.getLeft().getElement().getId() == element.getId()) {
-            return deleteLeft(p);
+            return deleteReservaLeft(p);
         } else if (p.getRight() != null && p.getRight().getElement().getId() == element.getId()) {
-            return deleteRight(p);
+            return deleteReservaRight(p);
         }
         return null;
     }
     
-    public NodoArbol deleteHabitacion(NodoArbol<Habitacion> p, Habitacion element) {
-        if (this.root != null && getRoot().getElement().getId() == element.getId()) {
-            return deleteRoot();
-        } else if (p.getLeft() != null && p.getLeft().getElement().getId() == element.getId()) {
-            return deleteLeft(p);
-        } else if (p.getRight() != null && p.getRight().getElement().getId() == element.getId()) {
-            return deleteRight(p);
-        }
-        return null;
-    }
-
-    public NodoArbol deleteRight(NodoArbol<T> p) {
+    public NodoArbol deleteReservaRight(NodoArbol<Reserva> p) {
         if (p.getRight() != null) {
             NodoArbol aux = p.getRight();
             p.setRight(null);
@@ -212,4 +225,63 @@ public class ABB<T> {
         }
         return null;
     }
+    
+    
+    public NodoArbol deleteHabitacion(NodoArbol<Habitacion> p, Habitacion element) {
+        if (this.root != null && p.getElement().getId() == element.getId()) {
+            return deleteRoot();
+        } else if (p.getLeft() != null && p.getLeft().getElement().getId() == element.getId()) {
+            return deleteHabitacionLeft(p);
+        } else if (p.getRight() != null && p.getRight().getElement().getId() == element.getId()) {
+            return deleteHabitacionRight(p);
+        }
+        return null;
+    }
+    
+    
+        public NodoArbol deleteHabitacionLeft(NodoArbol<Habitacion> p) {
+        if (p.getLeft() != null) {
+            NodoArbol aux = p.getLeft();
+            p.setLeft(null);
+            if (aux.getLeft() != null && aux.getRight() != null) {
+                NodoArbol aux2 = aux.getLeft();
+                p.setLeft(aux.getLeft());
+                while (aux2.getRight() != null) {
+                    aux2 = aux2.getRight();
+                }
+                aux2.setRight(aux.getRight());
+            } else if (aux.getLeft() != null) {
+                p.setLeft(aux.getLeft());
+            } else if (aux.getRight() != null) {
+                p.setLeft(aux.getRight());
+            }
+            return aux;
+        }
+        return null;
+
+    }
+        
+        
+    public NodoArbol deleteHabitacionRight(NodoArbol<Habitacion> p) {
+        if (p.getRight() != null) {
+            NodoArbol aux = p.getRight();
+            p.setRight(null);
+
+            if (aux.getLeft() != null && aux.getRight() != null) {
+                NodoArbol aux2 = aux.getRight();
+                p.setRight(aux.getRight());
+                while (aux2.getLeft() != null) {
+                    aux2 = aux2.getLeft();
+                }
+                aux2.setLeft(aux.getLeft());
+            } else if (aux.getLeft() != null) {
+                p.setRight(aux.getLeft());
+            } else if (aux.getRight() != null) {
+                p.setRight(aux.getRight());
+            }
+            return aux;
+        }
+        return null;
+    }
+
 }
