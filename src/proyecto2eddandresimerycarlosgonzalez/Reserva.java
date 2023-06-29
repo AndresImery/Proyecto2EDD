@@ -55,6 +55,8 @@ public class Reserva {
         this.salida = salida;
     }
     
-    
+    public int getId() {
+        return cliente.getCedula();
+    }
     
 }

@@ -9,7 +9,7 @@ package proyecto2eddandresimerycarlosgonzalez;
  * @author andresimery
  */
 public class Cliente {
-    private String cedula;
+    private int cedula;
     private String nombre;
     private String apellido;
     private String correo;
@@ -17,7 +17,7 @@ public class Cliente {
     private String genero;
     private Habitacion habitacion;
 
-    public Cliente(String cedula, String nombre, String apellido, String correo, String celular, String genero) {
+    public Cliente(int cedula, String nombre, String apellido, String correo, String celular, String genero) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -27,11 +27,11 @@ public class Cliente {
         this.habitacion = null;
     }
 
-    public String getCedula() {
+    public int getCedula() {
         return cedula;
     }
 
-    public void setCedula(String cedula) {
+    public void setCedula(int cedula) {
         this.cedula = cedula;
     }
 

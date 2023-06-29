@@ -8,17 +8,12 @@ package proyecto2eddandresimerycarlosgonzalez;
  *
  * @author Carlo
  */
-public class ABB <T>{
+public class ABB<T> {
     private NodoArbol<T> root;
 
     public ABB(){
         this.root = null;
     }
-    
-    public ABB(NodoArbol<T> nodo){
-        this.root = nodo;
-    }
-
     
     public NodoArbol getRoot() {
         return root;
@@ -28,21 +23,45 @@ public class ABB <T>{
         this.root = root;
     }
     
-    public void insert(NodoArbol<T> root, NodoArbol<T> newNode) {
+    public void insertReserva(NodoArbol<Reserva> root, Reserva element) {
+        NodoArbol<Reserva> newNode = new NodoArbol<>(element);
         if (this.root == null) {
-            this.root = newNode;
+            this.root = (NodoArbol<T>) newNode;
         } else {
-            if (newNode.getTreeID() < root.getTreeID()) {
+            if (newNode.getElement().getId() < root.getElement().getId()) {
                 if (root.getLeft() == null) {
                     root.setLeft(newNode);
                 } else {
-                    insert(root.getLeft(), newNode);
+                    insertReserva(root.getLeft(), newNode.getElement());
                 }
-            } else if (newNode.getTreeID().getID > root.getTreeID()) {
+            } else if (newNode.getElement().getId() > root.getElement().getId()) {
                 if (root.getRight() == null) {
-                    root.setRight(newNode);
+                    root.setRight(newNode); 
                 } else {
-                    insert(root.getRight(), newNode);
+                    insertReserva(root.getRight(), newNode.getElement());
+                }
+            } else {
+                System.out.println("El elemento ya se encuentra en el Árbol");
+            }
+        }
+    }
+    
+    public void insertHabitacion(NodoArbol<Habitacion> root, Habitacion element) {
+        NodoArbol<Habitacion> newNode = new NodoArbol<>(element);
+        if (this.root == null) {
+            this.root = (NodoArbol<T>) newNode;
+        } else {
+            if (newNode.getElement().getId() < root.getElement().getId()) {
+                if (root.getLeft() == null) {
+                    root.setLeft(newNode);
+                } else {
+                    insertHabitacion(root.getLeft(), newNode.getElement());
+                }
+            } else if (newNode.getElement().getId() > root.getElement().getId()) {
+                if (root.getRight() == null) {
+                    root.setRight(newNode); 
+                } else {
+                    insertHabitacion(root.getRight(), newNode.getElement());
                 }
             } else {
                 System.out.println("El elemento ya se encuentra en el Árbol");
@@ -51,41 +70,62 @@ public class ABB <T>{
     }
     
     
-    public NodoArbol search(NodoArbol<T> aux, T treeID) {
+    public NodoArbol searchReserva(NodoArbol<Reserva> aux, Reserva element) {
         if (aux == null) return null;
         
-        if (aux.getTreeID() == treeID) {
+        if (aux.getElement().getId() == element.getId()) {
             return aux;
-        } else if(treeID < aux.getTreeID()) {
-            return search(aux.getLeft(), treeID);
+        } else if(element.getId() < aux.getElement().getId()) {
+            return searchReserva(aux.getLeft(), element);
         } else {
-            return search(aux.getRight(), treeID);
+            return searchReserva(aux.getRight(), element);
         }
     }
     
-    public int getNodeLevel(NodoArbol<T> aux, T treeID, int level) {
+    public NodoArbol searchHabitacion(NodoArbol<Habitacion> aux, Habitacion element) {
+        if (aux == null) return null;
+        
+        if (aux.getElement().getId() == element.getId()) {
+            return aux;
+        } else if(element.getId() < aux.getElement().getId()) {
+            return searchHabitacion(aux.getLeft(), element);
+        } else {
+            return searchHabitacion(aux.getRight(), element);
+        }
+    }
+    
+    public int getNodeLevel(NodoArbol<T> aux, T element, int level) {
         if (aux == null) return -1;
         
-        if (aux.getTreeID() == treeID) {
+        if (aux.getElement().getId() == element.getId()) {
             return level;
-        } else if (treeID < aux.getTreeID()) {
-            return getNodeLevel(aux.getLeft(), treeID, level + 1);
+        } else if (element.getId() < aux.getElement().getId()) {
+            return getNodeLevel(aux.getLeft(), element, level + 1);
         } else {
-            return getNodeLevel(aux.getRight(), treeID, level + 1);
+            return getNodeLevel(aux.getRight(), element, level + 1);
         }
     }
     
     
-    public boolean isInTheTree(NodoArbol aux, int treeID) {
+    public boolean isInTheTreeReserva(NodoArbol<Reserva> aux, Reserva element) {
         if (aux == null) return false;
         
-        if (aux.getTreeID() == treeID) 
+        if (aux.getElement().getId() == element.getId()) 
             return true;
         else
-            return (isInTheTree(aux.getLeft(), treeID) || isInTheTree(aux.getRight(), treeID));
+            return (isInTheTreeReserva(aux.getLeft(), element) || isInTheTreeReserva(aux.getRight(), element));
     }
     
-    public NodoArbol deleteLeft(NodoArbol p) {
+    public boolean isInTheTreeHabitacion(NodoArbol<Habitacion> aux, Habitacion element) {
+        if (aux == null) return false;
+        
+        if (aux.getElement().getId() == element.getId()) 
+            return true;
+        else
+            return (isInTheTreeHabitacion(aux.getLeft(), element) || isInTheTreeHabitacion(aux.getRight(), element));
+    }
+    
+    public NodoArbol deleteLeft(NodoArbol<T> p) {
         if (p.getLeft() != null) {
             NodoArbol aux = p.getLeft();
             p.setLeft(null);
@@ -129,18 +169,29 @@ public class ABB <T>{
         return null;
     }
 
-    public NodoArbol delete(NodoArbol p, int treeID) {
-        if (this.root != null && this.root.getTreeID() == treeID) {
+    public NodoArbol deleteReserva(NodoArbol<Reserva> p, Reserva element) {
+        if (this.root != null && getRoot().getElement().getId() == element.getId()) {
             return deleteRoot();
-        } else if (p.getLeft() != null && p.getLeft().getTreeID() == treeID) {
+        } else if (p.getLeft() != null && p.getLeft().getElement().getId() == element.getId()) {
             return deleteLeft(p);
-        } else if (p.getRight() != null && p.getRight().getTreeID() == treeID) {
+        } else if (p.getRight() != null && p.getRight().getElement().getId() == element.getId()) {
+            return deleteRight(p);
+        }
+        return null;
+    }
+    
+    public NodoArbol deleteHabitacion(NodoArbol<Habitacion> p, Habitacion element) {
+        if (this.root != null && getRoot().getElement().getId() == element.getId()) {
+            return deleteRoot();
+        } else if (p.getLeft() != null && p.getLeft().getElement().getId() == element.getId()) {
+            return deleteLeft(p);
+        } else if (p.getRight() != null && p.getRight().getElement().getId() == element.getId()) {
             return deleteRight(p);
         }
         return null;
     }
 
-    public NodoArbol deleteRight(NodoArbol p) {
+    public NodoArbol deleteRight(NodoArbol<T> p) {
         if (p.getRight() != null) {
             NodoArbol aux = p.getRight();
             p.setRight(null);

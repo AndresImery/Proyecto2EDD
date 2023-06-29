@@ -63,5 +63,8 @@ public class Habitacion {
         this.estado = estado;
     }
     
+    public int getId() {
+        return getNum();
+    }
     
 }

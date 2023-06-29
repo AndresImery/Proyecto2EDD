@@ -8,24 +8,24 @@ package proyecto2eddandresimerycarlosgonzalez;
  *
  * @author Carlo
  */
-public class NodoArbol <T>{
-    private T treeID;
-    private NodoArbol <T> left;
-    private NodoArbol <T> right;
+public class NodoArbol<T>{
+    private T element;
+    private NodoArbol<T> left;
+    private NodoArbol<T> right;
 
-    public NodoArbol(T treeID){
-        this.treeID = treeID;
+    public NodoArbol(T element){
+        this.element = element;
         this.left = null;
         this.right = null;
     }
     
-    public T getTreeID() {
-        return treeID;
+    public T getElement() {
+        return element;
     }
 
 
-    public void setTreeID(T treeID) {
-        this.treeID = treeID;
+    public void setTreeID(T element) {
+        this.element = element;
     }
 
 
