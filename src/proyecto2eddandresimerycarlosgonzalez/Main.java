@@ -51,6 +51,19 @@ public class Main {
 //        arbol.insertReserva(arbol.getRoot(), reserva1);
 //        arbol.insertReserva(arbol.getRoot(), reserva2);
         
+       
+        
+//        arbol.insertReserva(arbol.getRoot(), reserva1);
+//        arbol.insertReserva(arbol.getRoot(), reserva2);
+//        arbol.insertReserva(arbol.getRoot(), reserva3);
+//        arbol.printReservaInOrder( arbol.getRoot());
+//        System.out.println("-----------");
+//        arbol.deleteReserva(arbol.getRoot(), reserva3);
+//        arbol.printReservaInOrder( arbol.getRoot());
+//        System.out.println("-----------");
+//        arbol.deleteReserva(arbol.getRoot(), reserva3);
+//        arbol.printReservaInOrder( arbol.getRoot());
+
         func.readCSVs(arbol_habitaciones, arbol_reservas, hash);
         
         arbol_habitaciones.printHabitacionInOrder(arbol_habitaciones.getRoot());

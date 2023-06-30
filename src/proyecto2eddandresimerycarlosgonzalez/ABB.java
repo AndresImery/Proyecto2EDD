@@ -149,27 +149,7 @@ public class ABB<T> {
             return (isInTheTreeHabitacion(aux.getLeft(), element) || isInTheTreeHabitacion(aux.getRight(), element));
     }
     
-    public NodoArbol deleteReservaLeft(NodoArbol<Reserva> p) {
-        if (p.getLeft() != null) {
-            NodoArbol<Reserva> aux = p.getLeft();
-            p.setLeft(null);
-            if (aux.getLeft() != null && aux.getRight() != null) {
-                NodoArbol<Reserva> aux2 = aux.getLeft();
-                p.setLeft(aux.getLeft());
-                while (aux2.getRight() != null) {
-                    aux2 = aux2.getRight();
-                }
-                aux2.setRight(aux.getRight());
-            } else if (aux.getLeft() != null) {
-                p.setLeft(aux.getLeft());
-            } else if (aux.getRight() != null) {
-                p.setLeft(aux.getRight());
-            }
-            return aux;
-        }
-        return null;
 
-    }
 
 
     public NodoArbol deleteRoot() {
@@ -196,12 +176,33 @@ public class ABB<T> {
     public NodoArbol deleteReserva(NodoArbol<Reserva> p, Reserva element) {
         if (this.root != null && p.getElement().getId() == element.getId()) {
             return deleteRoot();
-        } else if (p.getLeft() != null && p.getLeft().getElement().getId() == element.getId()) {
+        } else if (p.getLeft() != null && p.getLeft().getElement().getCliente().getCedula() == element.getCliente().getCedula()) {
             return deleteReservaLeft(p);
-        } else if (p.getRight() != null && p.getRight().getElement().getId() == element.getId()) {
+        } else if (p.getRight() != null && p.getRight().getElement().getCliente().getCedula() == element.getCliente().getCedula()) {
             return deleteReservaRight(p);
         }
         return null;
+    }
+    public NodoArbol deleteReservaLeft(NodoArbol<Reserva> p) {
+        if (p.getLeft() != null) {
+            NodoArbol<Reserva> aux = p.getLeft();
+            p.setLeft(null);
+            if (aux.getLeft() != null && aux.getRight() != null) {
+                NodoArbol<Reserva> aux2 = aux.getLeft();
+                p.setLeft(aux.getLeft());
+                while (aux2.getRight() != null) {
+                    aux2 = aux2.getRight();
+                }
+                aux2.setRight(aux.getRight());
+            } else if (aux.getLeft() != null) {
+                p.setLeft(aux.getLeft());
+            } else if (aux.getRight() != null) {
+                p.setLeft(aux.getRight());
+            }
+            return aux;
+        }
+        return null;
+
     }
     
     public NodoArbol deleteReservaRight(NodoArbol<Reserva> p) {
@@ -217,9 +218,9 @@ public class ABB<T> {
                 }
                 aux2.setLeft(aux.getLeft());
             } else if (aux.getLeft() != null) {
-                p.setRight(aux.getLeft());
-            } else if (aux.getRight() != null) {
                 p.setRight(aux.getRight());
+            } else if (aux.getRight() != null) {
+                p.setRight(aux.getLeft());
             }
             return aux;
         }
@@ -239,7 +240,7 @@ public class ABB<T> {
     }
     
     
-        public NodoArbol deleteHabitacionLeft(NodoArbol<Habitacion> p) {
+    public NodoArbol deleteHabitacionLeft(NodoArbol<Habitacion> p) {
         if (p.getLeft() != null) {
             NodoArbol<Habitacion> aux = p.getLeft();
             p.setLeft(null);
@@ -287,7 +288,7 @@ public class ABB<T> {
     public void printHabitacionInOrder(NodoArbol<Habitacion> root) {
         if (root != null) {
             printHabitacionInOrder(root.getLeft());
-            System.out.println(root.getElement() + ",");
+            System.out.println(root.getElement().getEstado().getCliente().getNombre() + "|"+ root.getElement().getEstado().getCliente().getApellido()+ "|"+ root.getElement().getEstado().getCliente().getGenero());
             printHabitacionInOrder(root.getRight());
         }
     }
@@ -295,9 +296,10 @@ public class ABB<T> {
     public void printReservaInOrder(NodoArbol<Reserva> root) {
         if (root != null) {
             printReservaInOrder(root.getLeft());
-            System.out.println(root.getElement() + ",");
+            System.out.println(root.getElement().getCliente().getCedula() + "|"+ root.getElement().getCliente().getNombre()+ "|"+ root.getElement().getCliente().getApellido()+ "|"+ root.getElement().getCliente().getGenero()+"///////");
             printReservaInOrder(root.getRight());
         }
+        
     }
 
 }
