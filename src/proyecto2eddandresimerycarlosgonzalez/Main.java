@@ -16,40 +16,44 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ABB<Reserva> arbol = new ABB<>();
+        Function func = new Function();
+        ABB<Habitacion> arbol_habitaciones = new ABB<>();
+        ABB<Reserva> arbol_reservas = new ABB<>();
         Hash hash = new Hash();
         
-        Habitacion habitacion1 = new Habitacion(12, "doble", 2, null);
-        Habitacion habitacion2 = new Habitacion(14, "single", 1, null);
+//        Habitacion habitacion1 = new Habitacion(12, "doble", 2);
+//        Habitacion habitacion2 = new Habitacion(14, "single", 1);
+//        
+//        
+//        
+//        Cliente cliente1 = new Cliente(12345, "Name", "LastName", "email@correo.com", "04242773364", "msculino");
+//        Reserva reserva1 = new Reserva(cliente1, "doble", new Date(25), new Date(26));
+//        Cliente cliente2 = new Cliente(123456, "Andres", "Imery", "emailimery@correo.com", "04242563364", "Macho");
+//        Reserva reserva2 = new Reserva(cliente2, "single", new Date(20), new Date(21));
+//        
+//        Estado estado1 = new Estado(habitacion1, cliente1, reserva1.getLlegada());
+//        habitacion1.setEstado(estado1);
+//        Estado estado2 = new Estado(habitacion2, cliente2, reserva2.getLlegada());
+//        habitacion2.setEstado(estado2);
+//        
+//        hash.addEstado(estado1);
+//        hash.addEstado(estado2);
+//        
+//        hash.printHash();
+//        
+//        hash.deleteEstado("Andres", "Imery");
+//        System.out.println("--");
+//        hash.printHash();
+//        hash.addEstado(estado2);
+//        System.out.println("--1");
+//        hash.printHash();
+//        
+//        arbol.insertReserva(arbol.getRoot(), reserva1);
+//        arbol.insertReserva(arbol.getRoot(), reserva2);
         
+        func.readCSVs(arbol_habitaciones, arbol_reservas, hash);
         
-        
-        Cliente cliente1 = new Cliente(12345, "Name", "LastName", "email@correo.com", "04242773364", "msculino");
-        Reserva reserva1 = new Reserva(cliente1, "doble", new Date(25), new Date(26));
-        Cliente cliente2 = new Cliente(123456, "Andres", "Imery", "emailimery@correo.com", "04242563364", "Macho");
-        Reserva reserva2 = new Reserva(cliente2, "single", new Date(20), new Date(21));
-        
-        Estado estado1 = new Estado(habitacion1, cliente1, reserva1.getLlegada());
-        habitacion1.setEstado(estado1);
-        Estado estado2 = new Estado(habitacion2, cliente2, reserva2.getLlegada());
-        habitacion2.setEstado(estado2);
-        
-        hash.addEstado(estado1);
-        hash.addEstado(estado2);
-        
-        hash.printHash();
-        
-        hash.deleteEstado("Andres", "Imery");
-        System.out.println("--");
-        hash.printHash();
-        hash.addEstado(estado2);
-        System.out.println("--1");
-        hash.printHash();
-        
-        arbol.insertReserva(arbol.getRoot(), reserva1);
-        arbol.insertReserva(arbol.getRoot(), reserva2);
-        
-        
+        arbol_habitaciones.printHabitacionInOrder(arbol_habitaciones.getRoot());
     }
     
 }
