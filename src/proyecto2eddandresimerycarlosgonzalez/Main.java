@@ -39,6 +39,13 @@ public class Main {
         
         hash.printHash();
         
+        hash.deleteEstado("Andres", "Imery");
+        System.out.println("--");
+        hash.printHash();
+        hash.addEstado(estado2);
+        System.out.println("--1");
+        hash.printHash();
+        
         arbol.insertReserva(arbol.getRoot(), reserva1);
         arbol.insertReserva(arbol.getRoot(), reserva2);
         

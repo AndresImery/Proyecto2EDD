@@ -54,6 +54,12 @@ public class Hash {
         getHashtable()[key].insertLast(estado);
     }
     
+    public void deleteEstado(String name, String lastname) {
+        int key = hashFunction(name, lastname);
+        
+        getHashtable()[key].deleteByElement(getEstado(name, lastname));
+    }
+    
     public Estado getEstado(String name, String lastname) {
         int key = hashFunction(name, lastname);
         
