@@ -67,6 +67,10 @@ public class Main {
         func.readCSVs(arbol_habitaciones, arbol_reservas, hash);
         
         arbol_habitaciones.printHabitacionInOrder(arbol_habitaciones.getRoot());
+        System.out.println("-------------------------------------------");
+        hash.printHash();
+        System.out.println("-------------------------------------------");
+        arbol_reservas.printReservaInOrder(arbol_reservas.getRoot());
     }
     
 }
