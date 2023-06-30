@@ -322,6 +322,12 @@ public class ABB<T> {
         if (root != null) {
             printHabitacionInOrder(root.getLeft());
             System.out.println(root.getElement().getNum() + "|"+ root.getElement().getTipo() + "|"+ root.getElement().getPiso());
+            Nodo<Historico> pointer = root.getElement().getHistoricos().getHead();
+            while (pointer != null) {
+                System.out.println(pointer.getElement().getCliente().getNombre() + " " + pointer.getElement().getCliente().getApellido() + " " + pointer.getElement().getLlegada().toString());
+                
+                pointer = pointer.getNext();
+            }
             printHabitacionInOrder(root.getRight());
         }
     }
