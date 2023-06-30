@@ -36,7 +36,7 @@ public class Hash {
     
     
     public int hashFunction(String name, String lastname) {
-        String full_name = name + lastname;
+        String full_name = name.toLowerCase() + lastname.toLowerCase();
         int value = 0;
         for (int i = 0; i < full_name.length(); i++) {
             int ascii = full_name.charAt(i);
@@ -48,6 +48,9 @@ public class Hash {
     public void addEstado(Estado estado) {
         int key = hashFunction(estado.getCliente().getNombre(), estado.getCliente().getApellido());
         
+        if (getHashtable()[key] == null) {
+            getHashtable()[key] = new Lista<Estado>();
+        }
         getHashtable()[key].insertLast(estado);
     }
     
@@ -62,6 +65,22 @@ public class Hash {
             pointer = pointer.getNext();
         }
         return null;
+    }
+    
+    public void printHash() {
+        Nodo<Estado> pointer;
+        int index = 0;
+        for (Lista<Estado> lista : getHashtable()) {
+            System.out.println(index);
+            if (lista != null) {
+                pointer = lista.getHead();
+                while (pointer != null) {
+                    System.out.println(pointer.getElement().getCliente().getNombre() + " " + pointer.getElement().getCliente().getApellido() + " Hab: " + pointer.getElement().getHabitacion().getNum());
+                    pointer = pointer.getNext();
+                }
+            }
+            index++;
+        }
     }
     
 }

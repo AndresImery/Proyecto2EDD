@@ -15,11 +15,11 @@ public class Habitacion {
     private Lista<Historico> historicos;
     private Estado estado;
 
-    public Habitacion(int num, String tipo, int piso, Lista<Historico> historicos, Estado estado) {
+    public Habitacion(int num, String tipo, int piso, Estado estado) {
         this.num = num;
         this.tipo = tipo;
         this.piso = piso;
-        this.historicos = historicos;
+        this.historicos = new Lista<Historico>();
         this.estado = estado;
     }
 
@@ -53,6 +53,10 @@ public class Habitacion {
 
     public void setHistoricos(Lista<Historico> historicos) {
         this.historicos = historicos;
+    }
+    
+    public void addHistorico(Historico historico) {
+        getHistoricos().insertLast(historico);
     }
 
     public Estado getEstado() {
