@@ -264,11 +264,11 @@ public class ABB<T> {
         
     public NodoArbol deleteHabitacionRight(NodoArbol<Habitacion> p) {
         if (p.getRight() != null) {
-            NodoArbol aux = p.getRight();
+            NodoArbol<Habitacion> aux = p.getRight();
             p.setRight(null);
 
             if (aux.getLeft() != null && aux.getRight() != null) {
-                NodoArbol aux2 = aux.getRight();
+                NodoArbol<Habitacion> aux2 = aux.getRight();
                 p.setRight(aux.getRight());
                 while (aux2.getLeft() != null) {
                     aux2 = aux2.getLeft();
