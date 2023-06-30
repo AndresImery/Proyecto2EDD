@@ -283,5 +283,21 @@ public class ABB<T> {
         }
         return null;
     }
+    
+    public void printHabitacionInOrder(NodoArbol<Habitacion> root) {
+        if (root != null) {
+            printHabitacionInOrder(root.getLeft());
+            System.out.println(root.getElement() + ",");
+            printHabitacionInOrder(root.getRight());
+        }
+    }
+    
+    public void printReservaInOrder(NodoArbol<Reserva> root) {
+        if (root != null) {
+            printReservaInOrder(root.getLeft());
+            System.out.println(root.getElement() + ",");
+            printReservaInOrder(root.getRight());
+        }
+    }
 
 }
