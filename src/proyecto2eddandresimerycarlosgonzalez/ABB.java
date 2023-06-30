@@ -151,10 +151,10 @@ public class ABB<T> {
     
     public NodoArbol deleteReservaLeft(NodoArbol<Reserva> p) {
         if (p.getLeft() != null) {
-            NodoArbol aux = p.getLeft();
+            NodoArbol<Reserva> aux = p.getLeft();
             p.setLeft(null);
             if (aux.getLeft() != null && aux.getRight() != null) {
-                NodoArbol aux2 = aux.getLeft();
+                NodoArbol<Reserva> aux2 = aux.getLeft();
                 p.setLeft(aux.getLeft());
                 while (aux2.getRight() != null) {
                     aux2 = aux2.getRight();
@@ -173,11 +173,11 @@ public class ABB<T> {
 
 
     public NodoArbol deleteRoot() {
-        NodoArbol aux = this.root;
+        NodoArbol<T> aux = this.root;
         this.root = null;
         if (aux.getLeft() != null && aux.getRight() != null) {
             this.root = aux.getRight();
-            NodoArbol aux2 = aux.getRight();
+            NodoArbol<T> aux2 = aux.getRight();
             while (aux2.getLeft() != null) {
                 aux2 = aux2.getLeft();
             }
@@ -206,11 +206,11 @@ public class ABB<T> {
     
     public NodoArbol deleteReservaRight(NodoArbol<Reserva> p) {
         if (p.getRight() != null) {
-            NodoArbol aux = p.getRight();
+            NodoArbol<Reserva> aux = p.getRight();
             p.setRight(null);
 
             if (aux.getLeft() != null && aux.getRight() != null) {
-                NodoArbol aux2 = aux.getRight();
+                NodoArbol<Reserva> aux2 = aux.getRight();
                 p.setRight(aux.getRight());
                 while (aux2.getLeft() != null) {
                     aux2 = aux2.getLeft();
@@ -241,10 +241,10 @@ public class ABB<T> {
     
         public NodoArbol deleteHabitacionLeft(NodoArbol<Habitacion> p) {
         if (p.getLeft() != null) {
-            NodoArbol aux = p.getLeft();
+            NodoArbol<Habitacion> aux = p.getLeft();
             p.setLeft(null);
             if (aux.getLeft() != null && aux.getRight() != null) {
-                NodoArbol aux2 = aux.getLeft();
+                NodoArbol<Habitacion> aux2 = aux.getLeft();
                 p.setLeft(aux.getLeft());
                 while (aux2.getRight() != null) {
                     aux2 = aux2.getRight();
