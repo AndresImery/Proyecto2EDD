@@ -13,8 +13,8 @@ public class Hash {
     private int size;
 
     public Hash() {
-        this.hashtable = new Lista[13];
         this.size = 13;
+        this.hashtable = new Lista[size];
     }
 
     public Lista<Estado>[] getHashtable() {
