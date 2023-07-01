@@ -73,9 +73,9 @@ public class Main {
 
         func.readCSVs(arbol_habitaciones, arbol_reservas, hash);
         
-//        arbol_habitaciones.printHabitacionInOrder(arbol_habitaciones.getRoot());
+        arbol_habitaciones.printHabitacionInOrder(arbol_habitaciones.getRoot());
         System.out.println("-------------------------------------------");
-//        hash.printHash();
+        hash.printHash();
         
         arbol_habitaciones.setRoot(arbol_habitaciones.buildTree(arbol_habitaciones.getRoot()));
 //        hash.deleteEstado("Andres", "Imery");
