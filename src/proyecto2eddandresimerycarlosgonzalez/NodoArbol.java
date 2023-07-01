@@ -7,14 +7,17 @@ package proyecto2eddandresimerycarlosgonzalez;
 /**
  *
  * @author Carlo
+ * @param <T>
  */
 public class NodoArbol<T>{
     private T element;
+    private int height;
     private NodoArbol<T> left;
     private NodoArbol<T> right;
 
     public NodoArbol(T element){
         this.element = element;
+        this.height = 1;
         this.left = null;
         this.right = null;
     }
@@ -23,12 +26,16 @@ public class NodoArbol<T>{
         return element;
     }
 
-
-    public void setTreeID(T element) {
+    public void setElement(T element) {
         this.element = element;
     }
 
-
+    public int getHeight(){
+        return height;
+    }
+    public void setHeight(int height){
+        this.height = height;
+    }
     public NodoArbol<T> getLeft() {
         return left;
     }

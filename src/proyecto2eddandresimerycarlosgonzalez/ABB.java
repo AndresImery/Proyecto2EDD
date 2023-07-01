@@ -7,6 +7,7 @@ package proyecto2eddandresimerycarlosgonzalez;
 /**
  *
  * @author Carlo
+ * @param <T>
  */
 public class ABB<T> {
     private NodoArbol<T> root;
@@ -22,7 +23,93 @@ public class ABB<T> {
     public void setRoot(NodoArbol root) {
         this.root = root;
     }
+//    public int maxReserva(int a,int b){
+//        return (a > b) ? a : b;
+//    }
     
+//    public int getNodeReservaLevel(NodoArbol<Reserva> H) {
+//        if (H == null) {
+//            return 0;
+//        }
+//        
+//        return H.getHeight();
+//    }
+    
+
+//    public NodoArbol rotateReservaRight(NodoArbol<Reserva> y, Reserva element){
+//        NodoArbol<Reserva> x = new NodoArbol<>(y.getLeft().getElement());
+//        NodoArbol<Reserva> T2 = new NodoArbol<>(x.getRight().getElement());
+//        x.setRight(y);
+//        y.setLeft(T2);
+//        y.setHeight(maxReserva(y.getLeft().getHeight(),y.getRight().getHeight())+1);
+//        x.setHeight(maxReserva(x.getLeft().getHeight(),x.getRight().getHeight())+1);
+//        return x;
+//    }
+//    
+//    public NodoArbol rotateReservaLeft(NodoArbol<Reserva> x, Reserva element){
+//        NodoArbol<Reserva> y = new NodoArbol<>(x.getRight().getElement());
+//        NodoArbol<Reserva> T2 = new NodoArbol<>(y.getLeft().getElement());
+//        y.setLeft(x);
+//        x.setRight(T2);
+//        x.setHeight(maxReserva(x.getLeft().getHeight(),x.getRight().getHeight())+1);
+//        y.setHeight(maxReserva(y.getLeft().getHeight(),y.getRight().getHeight())+1);
+//        return y;
+//    }
+//    
+//    public int getReservaBalance(NodoArbol<Reserva> H){
+//        if (H == null) {
+//            return 0;
+//        }
+//        
+//        return H.getLeft().getHeight() - H.getRight().getHeight();
+//    }
+//    
+//    public void insertReserva(NodoArbol<Reserva> root, Reserva element) {
+//        NodoArbol<Reserva> newNode = new NodoArbol<>(element);
+//        
+//        if (this.root == null) {
+//            return newNode;
+//        }
+//           
+//        if (element.getId()< root.getElement().getId()) {
+//            root.setLeft(insertReserva(root.getLeft(),element));
+//        } else if (element.getId()> root.getElement().getId()) {
+//            root.setRight(insertReserva(root.getRight(),element));
+//        } else {
+//            System.out.println("Una Persona con la misma cedula ya tiene una reservacion hecha");
+//            return root;
+//        }
+//        root.setHeight(1 + maxReserva(root.getLeft().getHeight(), root.getRight().getHeight()));
+// 
+//        /* 3. Get the balance factor of this ancestor
+//              node to check whether this node became
+//              unbalanced */
+//        int balance = getReservaBalance(root);
+// 
+//        // If this node becomes unbalanced, then there
+//        // are 4 cases Left Left Case
+//        if (balance > 1 && element.getId() < root.getLeft().getElement().getId()){
+//            return rotateReservaRight(root, element);
+//        }
+//        // Right Right Case
+//        if (balance < -1 && element.getId() > root.getLeft().getElement().getId()){
+//            return rotateReservaLeft(root, element);
+//        
+//        }
+//        // Left Right Case
+//        if (balance > 1 && element.getId() > root.getLeft().getElement().getId()) {
+//            root.setLeft(rotateReservaLeft(root.getLeft() , element));
+//            return rotateReservaRight(root, element);
+//        }
+// 
+//        // Right Left Case
+//        if (balance < -1 && element.getId() < root.getRight().getElement().getId()) {
+//            root.setRight(rotateReservaRight(root.getRight() , element));
+//            return rotateReservaLeft(root, element);
+//        }
+//        
+//        return root;
+//    }
     public void insertReserva(NodoArbol<Reserva> root, Reserva element) {
         NodoArbol<Reserva> newNode = new NodoArbol<>(element);
         if (this.root == null) {
@@ -45,9 +132,10 @@ public class ABB<T> {
             }
         }
     }
-    
+
+
     public void insertHabitacion(NodoArbol<Habitacion> root, Habitacion element) {
-        NodoArbol<Habitacion> newNode = new NodoArbol<>(element);
+        NodoArbol<Habitacion> newNode = new NodoArbol(element);
         if (this.root == null) {
             this.root = (NodoArbol<T>) newNode;
         } else {
@@ -300,6 +388,22 @@ public class ABB<T> {
             printReservaInOrder(root.getRight());
         }
         
+    }
+    public void printReservaPostOrder(NodoArbol<Reserva> root) {
+        if (root != null) {
+            printReservaPostOrder(root.getLeft());
+            printReservaPostOrder(root.getRight());
+            System.out.println(root.getElement().getCliente().getCedula() + "|"+ root.getElement().getCliente().getNombre()+ "|"+ root.getElement().getCliente().getApellido()+ "|"+ root.getElement().getCliente().getGenero()+"///////");
+            
+        }
+        
+    }
+    public void printReservaPreOrder(NodoArbol<Reserva> root) {
+        if (root != null) {
+            System.out.println(root.getElement().getId() + "|"+ root.getElement().getCliente().getNombre()+ "|"+ root.getElement().getCliente().getApellido()+ "|"+ root.getElement().getCliente().getGenero()+"///////");
+            printReservaPreOrder(root.getLeft());
+            printReservaPreOrder(root.getRight());
+        }
     }
 
 }

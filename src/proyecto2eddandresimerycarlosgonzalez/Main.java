@@ -23,11 +23,11 @@ public class Main {
         Habitacion habitacion2 = new Habitacion(14, "single", 1, null);
         Habitacion habitacion3 = new Habitacion(14, "triple", 1, null);
         
-        Cliente cliente1 = new Cliente(26012655, "Carlos", "Gonzalez", "emailcarlos@correo.com", "02129857474", "no binario@#$$$$");
+        Cliente cliente1 = new Cliente(1, "Carlos", "Gonzalez", "emailcarlos@correo.com", "02129857474", "no binario@#$$$$");
         Reserva reserva1 = new Reserva(cliente1, "doble", new Date(25), new Date(26));
-        Cliente cliente2 = new Cliente(123456, "Andres", "Imery", "emailimery@correo.com", "04242563364", "Macho");
+        Cliente cliente2 = new Cliente(2, "Andres", "Imery", "emailimery@correo.com", "04242563364", "Macho");
         Reserva reserva2 = new Reserva(cliente2, "single", new Date(20), new Date(21));
-        Cliente cliente3 = new Cliente(12345, "Pedro", "Gonzales", "emailpedro@correo.com", "02129857874", "hembra");
+        Cliente cliente3 = new Cliente(3, "Pedro", "Gonzales", "emailpedro@correo.com", "02129857874", "hembra");
         Reserva reserva3 = new Reserva(cliente3, "triple", new Date(30), new Date(45));
         
         
@@ -53,13 +53,10 @@ public class Main {
         arbol.insertReserva(arbol.getRoot(), reserva1);
         arbol.insertReserva(arbol.getRoot(), reserva2);
         arbol.insertReserva(arbol.getRoot(), reserva3);
-        arbol.printReservaInOrder( arbol.getRoot());
+        arbol.printReservaInOrder(arbol.getRoot());
+        
         System.out.println("-----------");
-        arbol.deleteReserva(arbol.getRoot(), reserva3);
-        arbol.printReservaInOrder( arbol.getRoot());
-        System.out.println("-----------");
-        arbol.deleteReserva(arbol.getRoot(), reserva3);
-        arbol.printReservaInOrder( arbol.getRoot());
+        arbol.printReservaPreOrder(arbol.getRoot());
     }
     
 }
