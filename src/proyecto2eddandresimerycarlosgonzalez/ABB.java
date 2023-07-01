@@ -157,7 +157,7 @@ public class ABB<T> {
         }
     }
     
-    
+    //////////////////////abajo
     public NodoArbol searchReserva(NodoArbol<Reserva> aux, Reserva element) {
         if (aux == null) return null;
         
@@ -170,6 +170,23 @@ public class ABB<T> {
         }
     }
     
+    public NodoArbol searchReservaCedulaNodo(NodoArbol<Reserva> aux, int cedula) {
+        if (aux == null) return null;
+        
+        if (aux.getElement().getId() == cedula) {
+            return aux;
+        } else if(cedula < aux.getElement().getId()) {
+            return searchReservaCedulaNodo(aux.getLeft(), cedula);
+        } else {
+            return searchReservaCedulaNodo(aux.getRight(), cedula);
+        }
+    }
+    
+    public Reserva searchReservaCedula(NodoArbol<Reserva> aux, int cedula) {
+        return (Reserva) searchReservaCedulaNodo(aux, cedula).getElement();
+    }
+    
+    ///////////////////////abajo
     public NodoArbol searchHabitacion(NodoArbol<Habitacion> aux, Habitacion element) {
         if (aux == null) return null;
         
@@ -180,6 +197,22 @@ public class ABB<T> {
         } else {
             return searchHabitacion(aux.getRight(), element);
         }
+    }
+    
+    public NodoArbol searchHabitacionNumNodo(NodoArbol<Habitacion> aux, int num) {
+        if (aux == null) return null;
+        
+        if (aux.getElement().getId() == num) {
+            return aux;
+        } else if(num < aux.getElement().getId()) {
+            return searchHabitacionNumNodo(aux.getLeft(), num);
+        } else {
+            return searchHabitacionNumNodo(aux.getRight(), num);
+        }
+    }
+    
+    public Habitacion searchHabitacionNum(NodoArbol<Habitacion> aux, int num) {
+        return (Habitacion) searchHabitacionNumNodo(aux, num).getElement();
     }
     
     public int getNodeReservaLevel(NodoArbol<Reserva> aux, Reserva element, int level) {
@@ -376,7 +409,13 @@ public class ABB<T> {
     public void printHabitacionInOrder(NodoArbol<Habitacion> root) {
         if (root != null) {
             printHabitacionInOrder(root.getLeft());
-            System.out.println(root.getElement().getEstado().getCliente().getNombre() + "|"+ root.getElement().getEstado().getCliente().getApellido()+ "|"+ root.getElement().getEstado().getCliente().getGenero());
+            System.out.println(root.getElement().getNum() + "|"+ root.getElement().getTipo() + "|"+ root.getElement().getPiso());
+            Nodo<Historico> pointer = root.getElement().getHistoricos().getHead();
+            while (pointer != null) {
+                System.out.println(pointer.getElement().getCliente().getNombre() + " " + pointer.getElement().getCliente().getApellido() + " " + pointer.getElement().getLlegada().toString());
+                
+                pointer = pointer.getNext();
+            }
             printHabitacionInOrder(root.getRight());
         }
     }
@@ -384,7 +423,7 @@ public class ABB<T> {
     public void printReservaInOrder(NodoArbol<Reserva> root) {
         if (root != null) {
             printReservaInOrder(root.getLeft());
-            System.out.println(root.getElement().getCliente().getCedula() + "|"+ root.getElement().getCliente().getNombre()+ "|"+ root.getElement().getCliente().getApellido()+ "|"+ root.getElement().getCliente().getGenero()+"///////");
+            System.out.println(root.getElement().getCliente().getCedula() + "|"+ root.getElement().getCliente().getNombre()+ "|"+ root.getElement().getCliente().getApellido()+ "|"+ root.getElement().getCliente().getGenero());
             printReservaInOrder(root.getRight());
         }
         

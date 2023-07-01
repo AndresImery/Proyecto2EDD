@@ -13,8 +13,8 @@ public class Hash {
     private int size;
 
     public Hash() {
-        this.hashtable = new Lista[13];
         this.size = 13;
+        this.hashtable = new Lista[size];
     }
 
     public Lista<Estado>[] getHashtable() {
@@ -81,7 +81,11 @@ public class Hash {
             if (lista != null) {
                 pointer = lista.getHead();
                 while (pointer != null) {
-                    System.out.println(pointer.getElement().getCliente().getNombre() + " " + pointer.getElement().getCliente().getApellido() + " Hab: " + pointer.getElement().getHabitacion().getNum());
+                    if (pointer.getElement().getHabitacion() == null) {
+                        System.out.println(pointer.getElement().getCliente().getNombre() + " " + pointer.getElement().getCliente().getApellido());
+                    } else {
+                        System.out.println(pointer.getElement().getCliente().getNombre() + " " + pointer.getElement().getCliente().getApellido() + " Hab: " + pointer.getElement().getHabitacion().getNum());
+                    }
                     pointer = pointer.getNext();
                 }
             }

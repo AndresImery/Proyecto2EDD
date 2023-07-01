@@ -15,12 +15,12 @@ public class Habitacion {
     private Lista<Historico> historicos;
     private Estado estado;
 
-    public Habitacion(int num, String tipo, int piso, Estado estado) {
+    public Habitacion(int num, String tipo, int piso) {
         this.num = num;
         this.tipo = tipo;
         this.piso = piso;
         this.historicos = new Lista<Historico>();
-        this.estado = estado;
+        this.estado = null;
     }
 
     public int getNum() {
