@@ -98,7 +98,7 @@ public class Main {
 //        
 //        System.out.println(arbol_habitaciones.getNodeHabitacionLevel(arbol_habitaciones.getRoot(), prueba, 0));
         
-        
+        VentanaInicio inicio = new VentanaInicio(hash, arbol_r, arbol_h);
     }
     
 }
