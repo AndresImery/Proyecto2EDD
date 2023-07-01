@@ -74,10 +74,10 @@ public class Main {
 
         func.readCSVs(arbol_habitaciones, arbol_reservas, hash);
         
-        arbol_habitaciones.printHabitacionInOrder(arbol_habitaciones.getRoot());
-        System.out.println("-------------------------------------------");
-        hash.printHash();
-        arbol_reservas.printReservaInOrder(arbol_reservas.getRoot());
+//        arbol_habitaciones.printHabitacionInOrder(arbol_habitaciones.getRoot());
+//        System.out.println("-------------------------------------------");
+//        hash.printHash();
+//        arbol_reservas.printReservaInOrder(arbol_reservas.getRoot());
         arbol_reservas.setRoot(arbol_reservas.buildTree(arbol_reservas.getRoot()));
         arbol_habitaciones.setRoot(arbol_habitaciones.buildTree(arbol_habitaciones.getRoot()));
 //        hash.deleteEstado("Andres", "Imery");
@@ -87,16 +87,18 @@ public class Main {
 //        System.out.println("--1");
 //        hash.printHash();
 
-        System.out.println("***************************************");
-        arbol_habitaciones.printHabitacionPostOrder(arbol_habitaciones.getRoot());
-        System.out.println("***************************************");
-        arbol_habitaciones.printHabitacionPreOrder(arbol_habitaciones.getRoot());
-        System.out.println("////------------------------------------------////");
-        arbol_reservas.printReservaPreOrder(arbol_reservas.getRoot());
-        System.out.println("////------------------------------------------////");
-        Habitacion prueba = arbol_habitaciones.searchHabitacionNum(arbol_habitaciones.getRoot(), 300);
+//        System.out.println("***************************************");
+//        arbol_habitaciones.printHabitacionPostOrder(arbol_habitaciones.getRoot());
+//        System.out.println("***************************************");
+//        arbol_habitaciones.printHabitacionPreOrder(arbol_habitaciones.getRoot());
+//        System.out.println("////------------------------------------------////");
+//        arbol_reservas.printReservaPreOrder(arbol_reservas.getRoot());
+//        System.out.println("////------------------------------------------////");
+//        Habitacion prueba = arbol_habitaciones.searchHabitacionNum(arbol_habitaciones.getRoot(), 300);
+//        
+//        System.out.println(arbol_habitaciones.getNodeHabitacionLevel(arbol_habitaciones.getRoot(), prueba, 0));
         
-        System.out.println(arbol_habitaciones.getNodeHabitacionLevel(arbol_habitaciones.getRoot(), prueba, 0));
+        new VentanaInicio(hash, arbol_habitaciones, arbol_reservas);
     }
     
 }

@@ -4,17 +4,39 @@
  */
 package proyecto2eddandresimerycarlosgonzalez;
 
+import java.util.Date;
 /**
  *
  * @author Carlo
  */
 public class VentanaInicio extends javax.swing.JFrame {
-
+    private static Hash hash;
+    private static ABB<Habitacion> arbol_h;
+    private static ABB<Reserva> arbol_r;
     /**
      * Creates new form VentanaInicio
      */
-    public VentanaInicio() {
+    public VentanaInicio(Hash hash, ABB<Habitacion> arbol_h, ABB<Reserva> arbol_r) {
+        
         initComponents();
+        setVisible(true);
+        setLocationRelativeTo(null);
+        this.hash = hash;
+        this.arbol_h = arbol_h;
+        this.arbol_r = arbol_r;
+        
+    }
+    
+    public Hash getHash() {
+        return this.hash;
+    }
+    
+    public ABB<Habitacion> getArbolH() {
+        return this.arbol_h;
+    }
+    
+    public ABB<Reserva> getArbolR() {
+        return this.arbol_r;
     }
 
     /**
@@ -29,7 +51,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonSearchReserva = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -50,8 +72,13 @@ public class VentanaInicio extends javax.swing.JFrame {
         jButton7.setText("Check-In");
         jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 217, -1, -1));
 
-        jButton1.setText("Buscar Reservacion");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 141, -1, -1));
+        jButtonSearchReserva.setText("Buscar Reservacion");
+        jButtonSearchReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSearchReservaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonSearchReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 141, -1, -1));
 
         jButton8.setText("Check-Out");
         jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 217, -1, -1));
@@ -97,6 +124,13 @@ public class VentanaInicio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButtonSearchReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchReservaActionPerformed
+        new BuscarReservacion(this);
+        this.setVisible(false);
+        
+        this.getHash().printHash();
+    }//GEN-LAST:event_jButtonSearchReservaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -127,13 +161,12 @@ public class VentanaInicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaInicio().setVisible(true);
+                new VentanaInicio(hash, arbol_h, arbol_r).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -141,6 +174,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButtonSearchReserva;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
