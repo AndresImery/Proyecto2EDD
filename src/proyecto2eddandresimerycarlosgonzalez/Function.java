@@ -38,7 +38,7 @@ public class Function {
                     String split[] = data.split(",");
                     Habitacion habitacion = new Habitacion(Integer.parseInt(split[0]), split[1], Integer.parseInt(split[2]));
                     arbol_habitaciones.insertHabitacion(arbol_habitaciones.getRoot(), habitacion);
-                    System.out.println(habitacion.getNum() + " " + habitacion.getTipo() + " " + habitacion.getPiso());
+//                    System.out.println(habitacion.getNum() + " " + habitacion.getTipo() + " " + habitacion.getPiso());
                     
                     
                 }

@@ -103,6 +103,14 @@ public class Lista<T> {
         }
     }
     
+    public T getElementByIndex(int index) {
+        Nodo<T> pointer = getHead();
+        for (int i = 0; i < index; i++) {
+            pointer = pointer.getNext();
+        }
+        return pointer.getElement();
+    }
+    
     /**
      * Imprime los elementos de la lista
      * 

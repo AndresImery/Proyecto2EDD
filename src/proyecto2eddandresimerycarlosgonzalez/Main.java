@@ -52,12 +52,12 @@ public class Main {
 //        arbol.insertReserva(arbol.getRoot(), reserva2);
         
 
-        Cliente cliente1 = new Cliente(1, "Carlos", "Gonzalez", "emailcarlos@correo.com", "02129857474", "no binario@#$$$$");
-        Reserva reserva1 = new Reserva(cliente1, "doble", new Date(25), new Date(26));
-        Cliente cliente2 = new Cliente(2, "Andres", "Imery", "emailimery@correo.com", "04242563364", "Macho");
-        Reserva reserva2 = new Reserva(cliente2, "single", new Date(20), new Date(21));
-        Cliente cliente3 = new Cliente(3, "Pedro", "Gonzales", "emailpedro@correo.com", "02129857874", "hembra");
-        Reserva reserva3 = new Reserva(cliente3, "triple", new Date(30), new Date(45));
+//        Cliente cliente1 = new Cliente(1, "Carlos", "Gonzalez", "emailcarlos@correo.com", "02129857474", "no binario@#$$$$");
+//        Reserva reserva1 = new Reserva(cliente1, "doble", new Date(25), new Date(26));
+//        Cliente cliente2 = new Cliente(2, "Andres", "Imery", "emailimery@correo.com", "04242563364", "Macho");
+//        Reserva reserva2 = new Reserva(cliente2, "single", new Date(20), new Date(21));
+//        Cliente cliente3 = new Cliente(3, "Pedro", "Gonzales", "emailpedro@correo.com", "02129857874", "hembra");
+//        Reserva reserva3 = new Reserva(cliente3, "triple", new Date(30), new Date(45));
       
         
 //        arbol.insertReserva(arbol.getRoot(), reserva1);
@@ -73,15 +73,26 @@ public class Main {
 
         func.readCSVs(arbol_habitaciones, arbol_reservas, hash);
         
-        arbol_habitaciones.printHabitacionInOrder(arbol_habitaciones.getRoot());
+//        arbol_habitaciones.printHabitacionInOrder(arbol_habitaciones.getRoot());
         System.out.println("-------------------------------------------");
-        hash.printHash();
+//        hash.printHash();
+        
+        arbol_habitaciones.setRoot(arbol_habitaciones.buildTree(arbol_habitaciones.getRoot()));
 //        hash.deleteEstado("Andres", "Imery");
 //        System.out.println("--");
 //        hash.printHash();
 //        hash.addEstado(estado2);
 //        System.out.println("--1");
 //        hash.printHash();
+
+        System.out.println("***************************************");
+        arbol_habitaciones.printHabitacionPostOrder(arbol_habitaciones.getRoot());
+        System.out.println("***************************************");
+        arbol_habitaciones.printHabitacionPreOrder(arbol_habitaciones.getRoot());
+        
+        Habitacion prueba = arbol_habitaciones.searchHabitacionNum(arbol_habitaciones.getRoot(), 300);
+        
+        System.out.println(arbol_habitaciones.getNodeHabitacionLevel(arbol_habitaciones.getRoot(), prueba, 0));
     }
     
 }

@@ -23,6 +23,50 @@ public class ABB<T> {
     public void setRoot(NodoArbol root) {
         this.root = root;
     }
+    
+    // ----------------------------
+    public void storeBSTNodes(NodoArbol<T> root, Lista<NodoArbol<T>> nodes) {
+        // Base case
+        if (root == null)
+            return;
+ 
+        // Store nodes in Inorder (which is sorted
+        // order for BST)
+        storeBSTNodes(root.getLeft(), nodes);
+        nodes.insertLast(root);
+        storeBSTNodes(root.getRight(), nodes);
+    }
+    
+    public NodoArbol<T> buildTreeUtil(Lista<NodoArbol<T>> nodes, int start, int end) {
+        // base case
+        if (start > end)
+            return null;
+ 
+        /* Get the middle element and make it root */
+        int mid = (start + end) / 2;
+        NodoArbol<T> node = nodes.getElementByIndex(mid);
+ 
+        /* Using index in Inorder traversal, construct
+           left and right subtress */
+        node.setLeft(buildTreeUtil(nodes, start, mid - 1));
+        node.setRight(buildTreeUtil(nodes, mid + 1, end));
+ 
+        return node;
+        
+    }
+    
+    
+    public NodoArbol<T> buildTree(NodoArbol<T> root) {
+        // Store nodes of given BST in sorted order
+        Lista<NodoArbol<T>> nodes = new Lista<>();
+        storeBSTNodes(root, nodes);
+ 
+        // Constructs BST from nodes[]
+        int n = nodes.getSize();
+        return buildTreeUtil(nodes, 0, n - 1);
+    }
+    
+    // ----------------------------
 //    public int maxReserva(int a,int b){
 //        return (a > b) ? a : b;
 //    }
@@ -437,11 +481,39 @@ public class ABB<T> {
         }
         
     }
+    public void printHabitacionPostOrder(NodoArbol<Habitacion> root) {
+        if (root != null) {
+            printHabitacionPostOrder(root.getLeft());
+            printHabitacionPostOrder(root.getRight());
+            System.out.println(root.getElement().getNum() + "|"+ root.getElement().getTipo() + "|"+ root.getElement().getPiso());
+            Nodo<Historico> pointer = root.getElement().getHistoricos().getHead();
+            while (pointer != null) {
+                System.out.println(pointer.getElement().getCliente().getNombre() + " " + pointer.getElement().getCliente().getApellido() + " " + pointer.getElement().getLlegada().toString());
+                
+                pointer = pointer.getNext();
+            }
+            
+        }
+        
+    }
     public void printReservaPreOrder(NodoArbol<Reserva> root) {
         if (root != null) {
             System.out.println(root.getElement().getId() + "|"+ root.getElement().getCliente().getNombre()+ "|"+ root.getElement().getCliente().getApellido()+ "|"+ root.getElement().getCliente().getGenero()+"///////");
             printReservaPreOrder(root.getLeft());
             printReservaPreOrder(root.getRight());
+        }
+    }
+    public void printHabitacionPreOrder(NodoArbol<Habitacion> root) {
+        if (root != null) {
+            System.out.println(root.getElement().getNum() + "|"+ root.getElement().getTipo() + "|"+ root.getElement().getPiso());
+            Nodo<Historico> pointer = root.getElement().getHistoricos().getHead();
+            while (pointer != null) {
+                System.out.println(pointer.getElement().getCliente().getNombre() + " " + pointer.getElement().getCliente().getApellido() + " " + pointer.getElement().getLlegada().toString());
+                
+                pointer = pointer.getNext();
+            }
+            printHabitacionPreOrder(root.getLeft());
+            printHabitacionPreOrder(root.getRight());
         }
     }
 
