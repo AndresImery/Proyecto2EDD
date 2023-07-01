@@ -21,6 +21,7 @@ public class Main {
         ABB<Reserva> arbol_reservas = new ABB<>();
         Hash hash = new Hash();
         
+        
 //        Habitacion habitacion1 = new Habitacion(12, "doble", 2);
 //        Habitacion habitacion2 = new Habitacion(14, "single", 1);
 //        
@@ -76,7 +77,8 @@ public class Main {
         arbol_habitaciones.printHabitacionInOrder(arbol_habitaciones.getRoot());
         System.out.println("-------------------------------------------");
         hash.printHash();
-        
+        arbol_reservas.printReservaInOrder(arbol_reservas.getRoot());
+        arbol_reservas.setRoot(arbol_reservas.buildTree(arbol_reservas.getRoot()));
         arbol_habitaciones.setRoot(arbol_habitaciones.buildTree(arbol_habitaciones.getRoot()));
 //        hash.deleteEstado("Andres", "Imery");
 //        System.out.println("--");
@@ -89,7 +91,9 @@ public class Main {
         arbol_habitaciones.printHabitacionPostOrder(arbol_habitaciones.getRoot());
         System.out.println("***************************************");
         arbol_habitaciones.printHabitacionPreOrder(arbol_habitaciones.getRoot());
-        
+        System.out.println("////------------------------------------------////");
+        arbol_reservas.printReservaPreOrder(arbol_reservas.getRoot());
+        System.out.println("////------------------------------------------////");
         Habitacion prueba = arbol_habitaciones.searchHabitacionNum(arbol_habitaciones.getRoot(), 300);
         
         System.out.println(arbol_habitaciones.getNodeHabitacionLevel(arbol_habitaciones.getRoot(), prueba, 0));
