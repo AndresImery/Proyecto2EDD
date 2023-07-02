@@ -31,7 +31,7 @@ public class Cliente {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
+    public void setCedula(Integer cedula) {
         this.cedula = cedula;
     }
 

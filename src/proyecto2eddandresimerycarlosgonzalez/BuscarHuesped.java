@@ -7,6 +7,7 @@ package proyecto2eddandresimerycarlosgonzalez;
 //import java.io.IOException;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import java.lang.Exception;
 /**
  *
  * @author Carlo
@@ -214,7 +215,7 @@ public class BuscarHuesped extends javax.swing.JFrame {
         String nombre = this.jTextFieldNombre.getText();
         String apellido = this.jTextFieldApellido.getText();
         Estado estado = getInicio().getHash().getEstado(nombre, apellido);
-        
+        this.estado = estado;
         if (estado != null) {
             if (estado.getHabitacion() != null) {
                 this.jLabelNumeroHabitacion.setText(String.valueOf(estado.getHabitacion().getNum()));
@@ -229,7 +230,7 @@ public class BuscarHuesped extends javax.swing.JFrame {
             estado.getLlegada().getYear();
             System.out.println(llegada);
             this.jLabelLlegada.setText(estado.getLlegada().getDate() + "/" + estado.getLlegada().getMonth() + "/" + estado.getLlegada().getYear());
-            this.setEstado(estado);
+//            this.setEstado(estado);
             if (estado.getCliente().getCedula() == null) {
                 this.jLabelCedula.setVisible(true);
                 this.jTextFieldCedula.setVisible(true);
@@ -242,24 +243,40 @@ public class BuscarHuesped extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jButtonCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckOutActionPerformed
-        if (getEstado() != null) { 
+        if (this.estado != null) { 
             if (getEstado().getCliente().getCedula() == null) {
-                try {
+                ////
+//                new JOptionPane().showMessageDialog(null, "aqui");
+                String cedula_string = this.jTextFieldCedula.getText();
+                if (cedula_string.matches("\\d+")) {
                     Integer cedula = Integer.parseInt(this.jTextFieldCedula.getText());
                     getEstado().getCliente().setCedula(cedula);
-                } catch (Exception e) {
+                } else {
                     new JOptionPane().showMessageDialog(null, "La cédula debe ser unicamente números. (sin \".\")");
+                    getInicio().setVisible(true);
+                    this.dispose();
                 }
-            } else {
-                Integer cedula = getEstado().getCliente().getCedula();
+                
+                ////
+//                try {
+//                    Integer cedula = Integer.parseInt(this.jTextFieldCedula.getText());
+//                    getEstado().getCliente().setCedula(cedula);
+//                    getEstado().getCliente().setCedula(cedula);
+//                } catch (Exception e) {
+//                    new JOptionPane().showMessageDialog(null, "La cédula debe ser unicamente números. (sin \".\")");
+//                }
+            } 
+            if (getEstado().getCliente().getCedula() != null) {
+                if (getEstado().getHabitacion() != null) {
+                    Habitacion habitacion = getEstado().getHabitacion();
+                    Historico historico = new Historico(getEstado().getCliente(), getEstado().getLlegada(), habitacion);
+                    habitacion.getHistoricos().insertLast(historico);
+                }
+                getInicio().getHash().deleteEstado(getEstado().getCliente().getNombre(), getEstado().getCliente().getApellido());
+                new JOptionPane().showMessageDialog(null, "El cliente ha realizado Check-Out");
+                this.inicio.setVisible(true);
+                this.dispose();
             }
-            if (getEstado().getHabitacion() != null) {
-                Habitacion habitacion = getEstado().getHabitacion();
-                Historico historico = new Historico(getEstado().getCliente(), getEstado().getLlegada(), habitacion);
-                habitacion.getHistoricos().insertLast(historico);
-            }
-            getInicio().getHash().deleteEstado(getEstado().getCliente().getNombre(), getEstado().getCliente().getApellido());
-//            this.dispose();
         } else {
             new JOptionPane().showMessageDialog(null, "No ha buscado a ningun huesped");
         }

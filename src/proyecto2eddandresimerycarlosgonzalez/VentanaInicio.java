@@ -9,9 +9,9 @@ package proyecto2eddandresimerycarlosgonzalez;
  * @author Carlo
  */
 public class VentanaInicio extends javax.swing.JFrame {
-    private static Hash hash;
-    private static ABB<Reserva> arbol_r;
-    private static ABB<Habitacion> arbol_h;
+    public static Hash hash;
+    public static ABB<Reserva> arbol_r;
+    public static ABB<Habitacion> arbol_h;
     /**
      * Creates new form VentanaInicio
      */
