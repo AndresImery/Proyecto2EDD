@@ -9,15 +9,12 @@ package proyecto2eddandresimerycarlosgonzalez;
  * @author Carlo
  */
 public class BuscarReserva extends javax.swing.JFrame {
-    private static VentanaInicio inicio;
+
     /**
      * Creates new form BuscarReserva
      */
-    public BuscarReserva(VentanaInicio inicio) {
+    public BuscarReserva() {
         initComponents();
-        this.inicio = inicio;
-        setLocationRelativeTo(null);
-        setVisible(true);
     }
 
     /**
@@ -161,7 +158,7 @@ public class BuscarReserva extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BuscarReserva(inicio).setVisible(true);
+                new BuscarReserva().setVisible(true);
             }
         });
     }
