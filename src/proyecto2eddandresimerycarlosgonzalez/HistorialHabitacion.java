@@ -9,12 +9,15 @@ package proyecto2eddandresimerycarlosgonzalez;
  * @author Carlo
  */
 public class HistorialHabitacion extends javax.swing.JFrame {
-
+    private static VentanaInicio inicio;
     /**
      * Creates new form HistorialHabitacion
      */
-    public HistorialHabitacion() {
+    public HistorialHabitacion(VentanaInicio inicio) {
         initComponents();
+        setLocationRelativeTo(null);
+        setVisible(true);
+        this.inicio = inicio;
     }
 
     /**
@@ -30,7 +33,7 @@ public class HistorialHabitacion extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
+        jButtonVolver = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -39,7 +42,6 @@ public class HistorialHabitacion extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(612, 406));
         setMinimumSize(new java.awt.Dimension(612, 406));
-        setPreferredSize(new java.awt.Dimension(612, 406));
         setResizable(false);
         setSize(new java.awt.Dimension(612, 406));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -59,7 +61,6 @@ public class HistorialHabitacion extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setForeground(new java.awt.Color(255, 153, 0));
-        jScrollPane1.setOpaque(true);
 
         jList1.setBackground(new java.awt.Color(0, 0, 0));
         jList1.setBorder(null);
@@ -67,12 +68,17 @@ public class HistorialHabitacion extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 610, 200));
 
-        jButton1.setBackground(new java.awt.Color(255, 153, 0));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("Volver a Inicio");
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 367, 190, 40));
+        jButtonVolver.setBackground(new java.awt.Color(255, 153, 0));
+        jButtonVolver.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jButtonVolver.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonVolver.setText("Volver a Inicio");
+        jButtonVolver.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVolverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 367, 190, 40));
 
         jTextField1.setBackground(new java.awt.Color(255, 153, 0));
         jTextField1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -106,6 +112,11 @@ public class HistorialHabitacion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
+        this.inicio.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonVolverActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -136,13 +147,13 @@ public class HistorialHabitacion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HistorialHabitacion().setVisible(true);
+                new HistorialHabitacion(inicio).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

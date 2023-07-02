@@ -9,12 +9,15 @@ package proyecto2eddandresimerycarlosgonzalez;
  * @author Carlo
  */
 public class BuscarReserva extends javax.swing.JFrame {
-
+    private static VentanaInicio inicio;
     /**
      * Creates new form BuscarReserva
      */
-    public BuscarReserva() {
+    public BuscarReserva(VentanaInicio inicio) {
         initComponents();
+        setLocationRelativeTo(null);
+        setVisible(true);
+        this.inicio = inicio;
     }
 
     /**
@@ -29,7 +32,7 @@ public class BuscarReserva extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        jButtonVolver = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabelBNombre = new javax.swing.JLabel();
         jLabelBApellido = new javax.swing.JLabel();
@@ -65,16 +68,16 @@ public class BuscarReserva extends javax.swing.JFrame {
         jLabel4.setOpaque(true);
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -7, 620, 70));
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 153, 0));
-        jButton2.setText("Volver");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVolver.setBackground(new java.awt.Color(0, 0, 0));
+        jButtonVolver.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jButtonVolver.setForeground(new java.awt.Color(255, 153, 0));
+        jButtonVolver.setText("Volver");
+        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
+        jPanel1.add(jButtonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
@@ -141,9 +144,10 @@ public class BuscarReserva extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
+        this.inicio.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,14 +179,14 @@ public class BuscarReserva extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BuscarReserva().setVisible(true);
+                new BuscarReserva(inicio).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonVolver;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

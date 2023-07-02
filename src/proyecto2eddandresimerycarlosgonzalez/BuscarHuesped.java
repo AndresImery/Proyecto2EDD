@@ -9,12 +9,15 @@ package proyecto2eddandresimerycarlosgonzalez;
  * @author Carlo
  */
 public class BuscarHuesped extends javax.swing.JFrame {
-
+    private static VentanaInicio inicio;
     /**
      * Creates new form BuscarHuesped
      */
-    public BuscarHuesped() {
+    public BuscarHuesped(VentanaInicio inicio) {
         initComponents();
+        setLocationRelativeTo(null);
+        setVisible(true);
+        this.inicio = inicio;
     }
 
     /**
@@ -32,7 +35,7 @@ public class BuscarHuesped extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        jButtonVolver = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -94,11 +97,16 @@ public class BuscarHuesped extends javax.swing.JFrame {
         jLabel4.setOpaque(true);
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 310, 30));
 
-        jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 153, 0));
-        jButton4.setText("Volver a la Ventana de Inicio");
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+        jButtonVolver.setBackground(new java.awt.Color(0, 0, 0));
+        jButtonVolver.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButtonVolver.setForeground(new java.awt.Color(255, 153, 0));
+        jButtonVolver.setText("Volver a la Ventana de Inicio");
+        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVolverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -140,6 +148,11 @@ public class BuscarHuesped extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
+    private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
+        this.inicio.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonVolverActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -170,7 +183,7 @@ public class BuscarHuesped extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BuscarHuesped().setVisible(true);
+                new BuscarHuesped(inicio).setVisible(true);
             }
         });
     }
@@ -179,7 +192,7 @@ public class BuscarHuesped extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

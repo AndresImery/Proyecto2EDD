@@ -9,12 +9,15 @@ package proyecto2eddandresimerycarlosgonzalez;
  * @author Carlo
  */
 public class ReservarEstadia extends javax.swing.JFrame {
-
+    private static VentanaInicio inicio;
     /**
      * Creates new form ReservarEstadia
      */
-    public ReservarEstadia() {
+    public ReservarEstadia(VentanaInicio inicio) {
         initComponents();
+        setLocationRelativeTo(null);
+        setVisible(true);
+        this.inicio = inicio;
     }
 
     /**
@@ -40,6 +43,7 @@ public class ReservarEstadia extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButtonVolver = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -79,6 +83,14 @@ public class ReservarEstadia extends javax.swing.JFrame {
         jButton1.setText("Check-In");
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 370, -1, -1));
 
+        jButtonVolver.setText("Volver");
+        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVolverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 370, -1, -1));
+
         jLabel3.setBackground(new java.awt.Color(255, 153, 0));
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -105,6 +117,11 @@ public class ReservarEstadia extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
+        this.inicio.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,7 +153,7 @@ public class ReservarEstadia extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ReservarEstadia().setVisible(true);
+                new ReservarEstadia(inicio).setVisible(true);
             }
         });
     }
@@ -144,6 +161,7 @@ public class ReservarEstadia extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonVolver;
     private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;

@@ -47,8 +47,8 @@ public class VentanaInicio extends javax.swing.JFrame {
         Tituloportada2 = new javax.swing.JLabel();
         NoSeFia = new javax.swing.JLabel();
         BuscarHuesped = new javax.swing.JButton();
-        BuscarHistorial = new javax.swing.JButton();
-        NuevaReserva = new javax.swing.JButton();
+        CrearReserva = new javax.swing.JButton();
+        BuscarHistorialHabitacion = new javax.swing.JButton();
         GuardarExit = new javax.swing.JButton();
         FondoRecepcion = new javax.swing.JLabel();
 
@@ -66,6 +66,11 @@ public class VentanaInicio extends javax.swing.JFrame {
         BuscarReserva.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         BuscarReserva.setForeground(new java.awt.Color(0, 0, 0));
         BuscarReserva.setText("Buscar Reservacion / Check-In");
+        BuscarReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarReservaActionPerformed(evt);
+            }
+        });
         jPanel1.add(BuscarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
         TituloPortada.setBackground(new java.awt.Color(0, 0, 0));
@@ -96,19 +101,34 @@ public class VentanaInicio extends javax.swing.JFrame {
         BuscarHuesped.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         BuscarHuesped.setForeground(new java.awt.Color(0, 0, 0));
         BuscarHuesped.setText("Buscar Huesped / Check-Out");
+        BuscarHuesped.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarHuespedActionPerformed(evt);
+            }
+        });
         jPanel1.add(BuscarHuesped, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
-        BuscarHistorial.setBackground(new java.awt.Color(255, 153, 0));
-        BuscarHistorial.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        BuscarHistorial.setForeground(new java.awt.Color(0, 0, 0));
-        BuscarHistorial.setText("Crear Reservacion");
-        jPanel1.add(BuscarHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        CrearReserva.setBackground(new java.awt.Color(255, 153, 0));
+        CrearReserva.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        CrearReserva.setForeground(new java.awt.Color(0, 0, 0));
+        CrearReserva.setText("Crear Reservacion");
+        CrearReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearReservaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(CrearReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
-        NuevaReserva.setBackground(new java.awt.Color(255, 153, 0));
-        NuevaReserva.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        NuevaReserva.setForeground(new java.awt.Color(0, 0, 0));
-        NuevaReserva.setText("Buscar Historial de Habitacion");
-        jPanel1.add(NuevaReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+        BuscarHistorialHabitacion.setBackground(new java.awt.Color(255, 153, 0));
+        BuscarHistorialHabitacion.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        BuscarHistorialHabitacion.setForeground(new java.awt.Color(0, 0, 0));
+        BuscarHistorialHabitacion.setText("Buscar Historial de Habitacion");
+        BuscarHistorialHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarHistorialHabitacionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BuscarHistorialHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
         GuardarExit.setBackground(new java.awt.Color(255, 153, 0));
         GuardarExit.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
@@ -124,6 +144,26 @@ public class VentanaInicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BuscarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarReservaActionPerformed
+        new BuscarReserva(this);
+        setVisible(false);
+    }//GEN-LAST:event_BuscarReservaActionPerformed
+
+    private void BuscarHuespedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarHuespedActionPerformed
+        new BuscarHuesped(this);
+        setVisible(false);
+    }//GEN-LAST:event_BuscarHuespedActionPerformed
+
+    private void BuscarHistorialHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarHistorialHabitacionActionPerformed
+        new HistorialHabitacion(this);
+        setVisible(false);
+    }//GEN-LAST:event_BuscarHistorialHabitacionActionPerformed
+
+    private void CrearReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearReservaActionPerformed
+        new ReservarEstadia(this);
+        setVisible(false);
+    }//GEN-LAST:event_CrearReservaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,13 +201,13 @@ public class VentanaInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BuscarHistorial;
+    private javax.swing.JButton BuscarHistorialHabitacion;
     private javax.swing.JButton BuscarHuesped;
     private javax.swing.JButton BuscarReserva;
+    private javax.swing.JButton CrearReserva;
     private javax.swing.JLabel FondoRecepcion;
     private javax.swing.JButton GuardarExit;
     private javax.swing.JLabel NoSeFia;
-    private javax.swing.JButton NuevaReserva;
     private javax.swing.JLabel TituloPortada;
     private javax.swing.JLabel Tituloportada2;
     private javax.swing.JPanel jPanel1;
