@@ -4,22 +4,41 @@
  */
 package proyecto2eddandresimerycarlosgonzalez;
 
+//import java.io.IOException;
+import java.util.Date;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Carlo
  */
 public class BuscarHuesped extends javax.swing.JFrame {
     private static VentanaInicio inicio;
+    private Estado estado;
     /**
      * Creates new form BuscarHuesped
      */
     public BuscarHuesped(VentanaInicio inicio) {
         initComponents();
+        this.jLabelCedula.setVisible(false);
+        this.jTextFieldCedula.setVisible(false);
         setLocationRelativeTo(null);
         setVisible(true);
         this.inicio = inicio;
+        this.estado = null;
+    }
+    
+    public VentanaInicio getInicio() {
+        return this.inicio;
+    }
+    
+    public Estado getEstado() {
+        return this.estado;
     }
 
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,14 +49,21 @@ public class BuscarHuesped extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        jLabelNumeroHabitacion = new javax.swing.JLabel();
+        jLabelCedula = new javax.swing.JLabel();
+        jTextFieldCedula = new javax.swing.JTextField();
+        jButtonBuscar = new javax.swing.JButton();
+        jLabelGenero = new javax.swing.JLabel();
+        jLabelLlegada = new javax.swing.JLabel();
+        jTextFieldApellido = new javax.swing.JTextField();
+        jLabelCorreo = new javax.swing.JLabel();
+        jTextFieldNombre = new javax.swing.JTextField();
+        jLabelTelefono = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButtonVolver = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonCheckOut = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -51,35 +77,61 @@ public class BuscarHuesped extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(612, 406));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 153, 0));
-        jButton1.setText("Buscar");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, -1, 30));
+        jLabelNumeroHabitacion.setText("jLabel5");
+        jPanel1.add(jLabelNumeroHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, -1, -1));
 
-        jTextField2.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 153, 0));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("Apellido");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jLabelCedula.setText("Ingrese su cédula para hacer checkout.");
+        jPanel1.add(jLabelCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, -1, -1));
+
+        jTextFieldCedula.setText("Cedula");
+        jPanel1.add(jTextFieldCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 100, -1));
+
+        jButtonBuscar.setBackground(new java.awt.Color(0, 0, 0));
+        jButtonBuscar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButtonBuscar.setForeground(new java.awt.Color(255, 153, 0));
+        jButtonBuscar.setText("Buscar");
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jButtonBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 110, 30));
+        jPanel1.add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, -1, 30));
 
-        jTextField1.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 153, 0));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("Nombre");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jLabelGenero.setText("jLabel5");
+        jPanel1.add(jLabelGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
+
+        jLabelLlegada.setText("jLabel5");
+        jPanel1.add(jLabelLlegada, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, -1));
+
+        jTextFieldApellido.setBackground(new java.awt.Color(0, 0, 0));
+        jTextFieldApellido.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextFieldApellido.setForeground(new java.awt.Color(255, 153, 0));
+        jTextFieldApellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldApellido.setText("Apellido");
+        jTextFieldApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldApellidoActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 110, 30));
+        jPanel1.add(jTextFieldApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 110, 30));
+
+        jLabelCorreo.setText("jLabel5");
+        jPanel1.add(jLabelCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, -1));
+
+        jTextFieldNombre.setBackground(new java.awt.Color(0, 0, 0));
+        jTextFieldNombre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextFieldNombre.setForeground(new java.awt.Color(255, 153, 0));
+        jTextFieldNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldNombre.setText("Nombre");
+        jTextFieldNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNombreActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 110, 30));
+
+        jLabelTelefono.setText("jLabel5");
+        jPanel1.add(jLabelTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Cambria", 1, 36)); // NOI18N
@@ -114,11 +166,16 @@ public class BuscarHuesped extends javax.swing.JFrame {
         jButton3.setText("Borrar Cliente");
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 153, 0));
-        jButton2.setText("Check-Out");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, -1, -1));
+        jButtonCheckOut.setBackground(new java.awt.Color(0, 0, 0));
+        jButtonCheckOut.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButtonCheckOut.setForeground(new java.awt.Color(255, 153, 0));
+        jButtonCheckOut.setText("Check-Out");
+        jButtonCheckOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCheckOutActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, -1, -1));
 
         jLabel3.setBackground(new java.awt.Color(255, 153, 0));
         jLabel3.setFont(new java.awt.Font("Arial", 1, 25)); // NOI18N
@@ -140,18 +197,73 @@ public class BuscarHuesped extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextFieldNombreActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextFieldApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldApellidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextFieldApellidoActionPerformed
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
         this.inicio.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonVolverActionPerformed
+
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+        String nombre = this.jTextFieldNombre.getText();
+        String apellido = this.jTextFieldApellido.getText();
+        Estado estado = getInicio().getHash().getEstado(nombre, apellido);
+        
+        if (estado != null) {
+            if (estado.getHabitacion() != null) {
+                this.jLabelNumeroHabitacion.setText(String.valueOf(estado.getHabitacion().getNum()));
+            } else {
+                this.jLabelNumeroHabitacion.setText("No se ubica en una habitación");
+            }
+            this.jLabelCorreo.setText(estado.getCliente().getCorreo());
+            this.jLabelGenero.setText(estado.getCliente().getGenero());
+            this.jLabelTelefono.setText(estado.getCliente().getCelular());
+
+            String llegada = estado.getLlegada().toString();
+            estado.getLlegada().getYear();
+            System.out.println(llegada);
+            this.jLabelLlegada.setText(estado.getLlegada().getDate() + "/" + estado.getLlegada().getMonth() + "/" + estado.getLlegada().getYear());
+            this.setEstado(estado);
+            if (estado.getCliente().getCedula() == null) {
+                this.jLabelCedula.setVisible(true);
+                this.jTextFieldCedula.setVisible(true);
+            }
+        } else {
+            new JOptionPane().showMessageDialog(null, "El CLiente no ha sido encontrado.");
+        }
+        
+        
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
+
+    private void jButtonCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckOutActionPerformed
+        if (getEstado() != null) { 
+            if (getEstado().getCliente().getCedula() == null) {
+                try {
+                    Integer cedula = Integer.parseInt(this.jTextFieldCedula.getText());
+                    getEstado().getCliente().setCedula(cedula);
+                } catch (Exception e) {
+                    new JOptionPane().showMessageDialog(null, "La cédula debe ser unicamente números. (sin \".\")");
+                }
+            } else {
+                Integer cedula = getEstado().getCliente().getCedula();
+            }
+            if (getEstado().getHabitacion() != null) {
+                Habitacion habitacion = getEstado().getHabitacion();
+                Historico historico = new Historico(getEstado().getCliente(), getEstado().getLlegada(), habitacion);
+                habitacion.getHistoricos().insertLast(historico);
+            }
+            getInicio().getHash().deleteEstado(getEstado().getCliente().getNombre(), getEstado().getCliente().getApellido());
+//            this.dispose();
+        } else {
+            new JOptionPane().showMessageDialog(null, "No ha buscado a ningun huesped");
+        }
+    }//GEN-LAST:event_jButtonCheckOutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,16 +301,23 @@ public class BuscarHuesped extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonBuscar;
+    private javax.swing.JButton jButtonCheckOut;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelCedula;
+    private javax.swing.JLabel jLabelCorreo;
+    private javax.swing.JLabel jLabelGenero;
+    private javax.swing.JLabel jLabelLlegada;
+    private javax.swing.JLabel jLabelNumeroHabitacion;
+    private javax.swing.JLabel jLabelTelefono;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextFieldApellido;
+    private javax.swing.JTextField jTextFieldCedula;
+    private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 }

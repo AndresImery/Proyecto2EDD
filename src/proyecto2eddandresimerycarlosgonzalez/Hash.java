@@ -65,7 +65,7 @@ public class Hash {
         
         Nodo<Estado> pointer = getHashtable()[key].getHead();
         while (pointer != null) {
-            if (pointer.getElement().getCliente().getNombre().equals(name) && pointer.getElement().getCliente().getApellido().equals(lastname)) {
+            if (pointer.getElement().getCliente().getNombre().toLowerCase().equals(name.toLowerCase()) && pointer.getElement().getCliente().getApellido().toLowerCase().equals(lastname.toLowerCase())) {
                 return pointer.getElement();
             }
             pointer = pointer.getNext();
