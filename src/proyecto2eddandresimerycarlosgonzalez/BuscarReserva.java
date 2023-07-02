@@ -59,7 +59,7 @@ public class BuscarReserva extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Cambria", 1, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel4.setForeground(new java.awt.Color(255, 153, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("CHECK-IN HOTEL BOOKING");
         jLabel4.setOpaque(true);

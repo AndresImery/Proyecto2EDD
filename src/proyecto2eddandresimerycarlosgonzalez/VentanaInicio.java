@@ -82,7 +82,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         Tituloportada2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Tituloportada2.setText("¿Que quieres hacer pana?");
         Tituloportada2.setOpaque(true);
-        jPanel1.add(Tituloportada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 610, 30));
+        jPanel1.add(Tituloportada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 620, 30));
 
         NoSeFia.setBackground(new java.awt.Color(0, 0, 0));
         NoSeFia.setFont(new java.awt.Font("Georgia", 3, 12)); // NOI18N
@@ -90,7 +90,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         NoSeFia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NoSeFia.setText("No se fia. Hay recargas de saldo");
         NoSeFia.setOpaque(true);
-        jPanel1.add(NoSeFia, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 610, 30));
+        jPanel1.add(NoSeFia, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 620, 30));
 
         BuscarHuesped.setBackground(new java.awt.Color(255, 153, 0));
         BuscarHuesped.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
