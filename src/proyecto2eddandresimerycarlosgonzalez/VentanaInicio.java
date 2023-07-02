@@ -49,8 +49,6 @@ public class VentanaInicio extends javax.swing.JFrame {
         BuscarHuesped = new javax.swing.JButton();
         BuscarHistorial = new javax.swing.JButton();
         NuevaReserva = new javax.swing.JButton();
-        CheckIn = new javax.swing.JButton();
-        CheckOut = new javax.swing.JButton();
         GuardarExit = new javax.swing.JButton();
         FondoRecepcion = new javax.swing.JLabel();
 
@@ -64,46 +62,59 @@ public class VentanaInicio extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(612, 406));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BuscarReserva.setText("Buscar Reservacion");
+        BuscarReserva.setBackground(new java.awt.Color(255, 153, 0));
+        BuscarReserva.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        BuscarReserva.setForeground(new java.awt.Color(0, 0, 0));
+        BuscarReserva.setText("Buscar Reservacion / Check-In");
         jPanel1.add(BuscarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
-        TituloPortada.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        TituloPortada.setForeground(new java.awt.Color(255, 0, 0));
+        TituloPortada.setBackground(new java.awt.Color(0, 0, 0));
+        TituloPortada.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
+        TituloPortada.setForeground(new java.awt.Color(255, 153, 0));
         TituloPortada.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TituloPortada.setText("Bienvenido al Hotel Booking");
-        jPanel1.add(TituloPortada, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 50));
+        TituloPortada.setOpaque(true);
+        jPanel1.add(TituloPortada, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 50));
 
         Tituloportada2.setBackground(new java.awt.Color(0, 0, 0));
         Tituloportada2.setFont(new java.awt.Font("Yu Gothic Medium", 3, 18)); // NOI18N
-        Tituloportada2.setForeground(new java.awt.Color(255, 0, 0));
+        Tituloportada2.setForeground(new java.awt.Color(255, 153, 0));
         Tituloportada2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Tituloportada2.setText("¿En que podemos ser de inutilidad?");
-        jPanel1.add(Tituloportada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 610, 60));
+        Tituloportada2.setText("¿Que quieres hacer pana?");
+        Tituloportada2.setOpaque(true);
+        jPanel1.add(Tituloportada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 610, 30));
 
         NoSeFia.setBackground(new java.awt.Color(0, 0, 0));
         NoSeFia.setFont(new java.awt.Font("Georgia", 3, 12)); // NOI18N
-        NoSeFia.setForeground(new java.awt.Color(255, 0, 0));
+        NoSeFia.setForeground(new java.awt.Color(255, 153, 0));
         NoSeFia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NoSeFia.setText("No se fia. Hay recargas de saldo");
-        jPanel1.add(NoSeFia, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 610, 40));
+        NoSeFia.setOpaque(true);
+        jPanel1.add(NoSeFia, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 610, 30));
 
-        BuscarHuesped.setText("Buscar Huesped");
+        BuscarHuesped.setBackground(new java.awt.Color(255, 153, 0));
+        BuscarHuesped.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        BuscarHuesped.setForeground(new java.awt.Color(0, 0, 0));
+        BuscarHuesped.setText("Buscar Huesped / Check-Out");
         jPanel1.add(BuscarHuesped, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
+        BuscarHistorial.setBackground(new java.awt.Color(255, 153, 0));
+        BuscarHistorial.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        BuscarHistorial.setForeground(new java.awt.Color(0, 0, 0));
         BuscarHistorial.setText("Crear Reservacion");
         jPanel1.add(BuscarHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
+        NuevaReserva.setBackground(new java.awt.Color(255, 153, 0));
+        NuevaReserva.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        NuevaReserva.setForeground(new java.awt.Color(0, 0, 0));
         NuevaReserva.setText("Buscar Historial de Habitacion");
         jPanel1.add(NuevaReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
 
-        CheckIn.setText("Check In");
-        jPanel1.add(CheckIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
-
-        CheckOut.setText("Check Out");
-        jPanel1.add(CheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
-
+        GuardarExit.setBackground(new java.awt.Color(255, 153, 0));
+        GuardarExit.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        GuardarExit.setForeground(new java.awt.Color(0, 0, 0));
         GuardarExit.setText("Guardar y Salir");
-        jPanel1.add(GuardarExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+        jPanel1.add(GuardarExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
 
         FondoRecepcion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         FondoRecepcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto2eddandresimerycarlosgonzalez/fondorecepcion.jpg"))); // NOI18N
@@ -153,8 +164,6 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JButton BuscarHistorial;
     private javax.swing.JButton BuscarHuesped;
     private javax.swing.JButton BuscarReserva;
-    private javax.swing.JButton CheckIn;
-    private javax.swing.JButton CheckOut;
     private javax.swing.JLabel FondoRecepcion;
     private javax.swing.JButton GuardarExit;
     private javax.swing.JLabel NoSeFia;
