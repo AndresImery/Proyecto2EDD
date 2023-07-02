@@ -271,6 +271,7 @@ public class BuscarHuesped extends javax.swing.JFrame {
                     Habitacion habitacion = getEstado().getHabitacion();
                     Historico historico = new Historico(getEstado().getCliente(), getEstado().getLlegada(), habitacion);
                     habitacion.getHistoricos().insertLast(historico);
+                    habitacion.setEstado(null);
                 }
                 getInicio().getHash().deleteEstado(getEstado().getCliente().getNombre(), getEstado().getCliente().getApellido());
                 new JOptionPane().showMessageDialog(null, "El cliente ha realizado Check-Out");

@@ -4,6 +4,8 @@
  */
 package proyecto2eddandresimerycarlosgonzalez;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Carlo
@@ -19,6 +21,10 @@ public class HistorialHabitacion extends javax.swing.JFrame {
         setVisible(true);
         this.inicio = inicio;
     }
+    
+    public VentanaInicio getInicio() {
+        return this.inicio;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,11 +36,12 @@ public class HistorialHabitacion extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jLabelActual = new javax.swing.JLabel();
+        listClientes = new java.awt.List();
+        jLabelTipo = new javax.swing.JLabel();
+        jButtonBuscar = new javax.swing.JButton();
         jButtonVolver = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldNumero = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -51,22 +58,25 @@ public class HistorialHabitacion extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(612, 406));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setBackground(new java.awt.Color(255, 153, 0));
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Simple");
-        jLabel4.setOpaque(true);
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, 80, 30));
+        jLabelActual.setForeground(new java.awt.Color(255, 153, 0));
+        jLabelActual.setText("jLabelActual");
+        jPanel1.add(jLabelActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 370, 30));
+        jPanel1.add(listClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 610, 200));
 
-        jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setForeground(new java.awt.Color(255, 153, 0));
+        jLabelTipo.setBackground(new java.awt.Color(255, 153, 0));
+        jLabelTipo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabelTipo.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelTipo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTipo.setOpaque(true);
+        jPanel1.add(jLabelTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, 80, 30));
 
-        jList1.setBackground(new java.awt.Color(0, 0, 0));
-        jList1.setBorder(null);
-        jScrollPane1.setViewportView(jList1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 610, 200));
+        jButtonBuscar.setText("Buscar");
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
 
         jButtonVolver.setBackground(new java.awt.Color(255, 153, 0));
         jButtonVolver.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -80,12 +90,12 @@ public class HistorialHabitacion extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 367, 190, 40));
 
-        jTextField1.setBackground(new java.awt.Color(255, 153, 0));
-        jTextField1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("Número");
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 110, -1));
+        jTextFieldNumero.setBackground(new java.awt.Color(255, 153, 0));
+        jTextFieldNumero.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jTextFieldNumero.setForeground(new java.awt.Color(0, 0, 0));
+        jTextFieldNumero.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldNumero.setText("Número");
+        jPanel1.add(jTextFieldNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 110, -1));
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -116,6 +126,32 @@ public class HistorialHabitacion extends javax.swing.JFrame {
         this.inicio.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonVolverActionPerformed
+
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+        String numero_string = this.jTextFieldNumero.getText();
+        
+        if (numero_string.matches("\\d+")) {
+            this.listClientes.clear();
+            Integer numero = Integer.parseInt(numero_string);
+            Habitacion habitacion = getInicio().getArbol_H().searchHabitacionNum(getInicio().getArbol_H().getRoot(), numero);
+            this.jLabelTipo.setText(habitacion.getTipo());
+            if (habitacion.getEstado() != null) {
+                this.jLabelActual.setText("Cliente Actual: " + habitacion.getEstado().getCliente().getNombre() + " " + habitacion.getEstado().getCliente().getApellido());
+            }
+            if (habitacion.getHistoricos() != null) {
+                Nodo<Historico> pointer = habitacion.getHistoricos().getHead();
+                while (pointer != null) {
+                    Cliente cliente = pointer.getElement().getCliente();
+                    this.listClientes.add("C.I: " + cliente.getCedula() + "| " + cliente.getNombre() + " " + cliente.getApellido() + " |Cel: " + cliente.getCelular() + " |Correo: " + cliente.getCorreo() + " |Genero: " + cliente.getGenero());
+                    pointer = pointer.getNext();
+                }
+            }
+            
+            
+        } else {
+            new JOptionPane().showMessageDialog(null, "La Habitacion no ha sido encontrada.");
+        }
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,14 +189,15 @@ public class HistorialHabitacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JLabel jLabelActual;
+    private javax.swing.JLabel jLabelTipo;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldNumero;
+    private java.awt.List listClientes;
     // End of variables declaration//GEN-END:variables
 }
