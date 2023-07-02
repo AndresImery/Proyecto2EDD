@@ -4,12 +4,16 @@
  */
 package proyecto2eddandresimerycarlosgonzalez;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Carlo
  */
 public class BuscarReserva extends javax.swing.JFrame {
     private static VentanaInicio inicio;
+    private Reserva reserva;
+    private Estado estado;
     /**
      * Creates new form BuscarReserva
      */
@@ -18,8 +22,26 @@ public class BuscarReserva extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         this.inicio = inicio;
+        this.reserva = null;
+        this.estado = null;
+    }
+    public VentanaInicio getInicio() {
+        return this.inicio;
+    }
+    public Reserva getReserva() {
+        return this.reserva;
     }
 
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
+    }
+    public Estado getEstado() {
+        return this.estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,7 +52,7 @@ public class BuscarReserva extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldCedulaUser = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jButtonVolver = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -38,11 +60,11 @@ public class BuscarReserva extends javax.swing.JFrame {
         jLabelBApellido = new javax.swing.JLabel();
         jLabelBEmail = new javax.swing.JLabel();
         jLabelBGenero = new javax.swing.JLabel();
-        jLabelBNombre1 = new javax.swing.JLabel();
-        jLabelBNombre2 = new javax.swing.JLabel();
-        jLabelBNombre3 = new javax.swing.JLabel();
-        jLabelBNombre4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabelBTipo = new javax.swing.JLabel();
+        jLabelBCelular = new javax.swing.JLabel();
+        jLabelBLlegada = new javax.swing.JLabel();
+        jLabelBSalida = new javax.swing.JLabel();
+        jComboBoxHabDisp = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -56,9 +78,14 @@ public class BuscarReserva extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(612, 406));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2.setBackground(new java.awt.Color(0, 0, 0));
-        jTextField2.setForeground(new java.awt.Color(255, 153, 0));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 120, -1));
+        jTextFieldCedulaUser.setBackground(new java.awt.Color(0, 0, 0));
+        jTextFieldCedulaUser.setForeground(new java.awt.Color(255, 153, 0));
+        jTextFieldCedulaUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCedulaUserActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextFieldCedulaUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, 120, -1));
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Cambria", 1, 36)); // NOI18N
@@ -106,23 +133,28 @@ public class BuscarReserva extends javax.swing.JFrame {
         jLabelBGenero.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jLabelBGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 340, 20));
 
-        jLabelBNombre1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelBNombre1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jLabelBNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 220, 20));
+        jLabelBTipo.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelBTipo.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jLabelBTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 220, 20));
 
-        jLabelBNombre2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelBNombre2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jLabelBNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 240, 20));
+        jLabelBCelular.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelBCelular.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jLabelBCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 240, 20));
 
-        jLabelBNombre3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelBNombre3.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jLabelBNombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 230, 20));
+        jLabelBLlegada.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelBLlegada.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jLabelBLlegada, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 230, 20));
 
-        jLabelBNombre4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabelBNombre4.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jLabelBNombre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 240, 20));
+        jLabelBSalida.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelBSalida.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jLabelBSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 240, 20));
 
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, 100, 30));
+        jComboBoxHabDisp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxHabDispActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBoxHabDisp, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, 100, 30));
 
         jLabel3.setBackground(new java.awt.Color(255, 153, 0));
         jLabel3.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
@@ -141,13 +173,35 @@ public class BuscarReserva extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Integer cedula = Integer.parseInt(this.jTextFieldCedulaUser.getText());
+        Reserva reserva = getInicio().getArbol_R().searchReservaCedula(getInicio().getArbol_R().getRoot(), cedula);
+        if(reserva == null){
+            //newJoptionpane aqui andres
+        }else{
+            jLabelBNombre.setText(reserva.getCliente().getNombre());
+            jLabelBNombre.setText(reserva.getCliente().getNombre());
+            jLabelBApellido.setText(reserva.getCliente().getApellido());
+            jLabelBEmail.setText(reserva.getCliente().getCorreo());
+            jLabelBGenero.setText(reserva.getCliente().getGenero());
+            jLabelBCelular.setText(reserva.getCliente().getCelular());
+            jLabelBLlegada.setText(reserva.getLlegada().getDate() + "/" + reserva.getLlegada().getMonth() + "/" + reserva.getLlegada().getYear());
+            jLabelBSalida.setText(reserva.getSalida().getDate() + "/" + reserva.getSalida().getMonth() + "/" + reserva.getSalida().getYear());
+            this.setReserva(reserva);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
         this.inicio.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonVolverActionPerformed
+
+    private void jComboBoxHabDispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxHabDispActionPerformed
+        
+    }//GEN-LAST:event_jComboBoxHabDispActionPerformed
+
+    private void jTextFieldCedulaUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCedulaUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCedulaUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,19 +241,19 @@ public class BuscarReserva extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonVolver;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxHabDisp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelBApellido;
+    private javax.swing.JLabel jLabelBCelular;
     private javax.swing.JLabel jLabelBEmail;
     private javax.swing.JLabel jLabelBGenero;
+    private javax.swing.JLabel jLabelBLlegada;
     private javax.swing.JLabel jLabelBNombre;
-    private javax.swing.JLabel jLabelBNombre1;
-    private javax.swing.JLabel jLabelBNombre2;
-    private javax.swing.JLabel jLabelBNombre3;
-    private javax.swing.JLabel jLabelBNombre4;
+    private javax.swing.JLabel jLabelBSalida;
+    private javax.swing.JLabel jLabelBTipo;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextFieldCedulaUser;
     // End of variables declaration//GEN-END:variables
 }
