@@ -65,6 +65,11 @@ public class VentanaInicio extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BuscarReserva.setText("Buscar Reservacion");
+        BuscarReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarReservaActionPerformed(evt);
+            }
+        });
         jPanel1.add(BuscarReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
         TituloPortada.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
@@ -113,6 +118,11 @@ public class VentanaInicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BuscarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarReservaActionPerformed
+        new BuscarReserva(this);
+        setVisible(false);
+    }//GEN-LAST:event_BuscarReservaActionPerformed
 
     /**
      * @param args the command line arguments
