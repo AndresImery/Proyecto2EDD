@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< Updated upstream
-            <file>file:/Users/andresimery/Documents/unimet/abril-julio%202023/estructuras/Proyecto%202/Proyecto2EDD/src/proyecto2eddandresimerycarlosgonzalez/Function.java</file>
-            <file>file:/Users/andresimery/Documents/unimet/abril-julio%202023/estructuras/Proyecto%202/Proyecto2EDD/src/proyecto2eddandresimerycarlosgonzalez/Estado.java</file>
-            <file>file:/Users/andresimery/Documents/unimet/abril-julio%202023/estructuras/Proyecto%202/Proyecto2EDD/src/proyecto2eddandresimerycarlosgonzalez/BuscarHuesped.java</file>
-            <file>file:/Users/andresimery/Documents/unimet/abril-julio%202023/estructuras/Proyecto%202/Proyecto2EDD/src/proyecto2eddandresimerycarlosgonzalez/Hash.java</file>
-            <file>file:/Users/andresimery/Documents/unimet/abril-julio%202023/estructuras/Proyecto%202/Proyecto2EDD/src/proyecto2eddandresimerycarlosgonzalez/Cliente.java</file>
-            <file>file:/Users/andresimery/Documents/unimet/abril-julio%202023/estructuras/Proyecto%202/Proyecto2EDD/src/proyecto2eddandresimerycarlosgonzalez/VentanaInicio.java</file>
-            <file>file:/Users/andresimery/Documents/unimet/abril-julio%202023/estructuras/Proyecto%202/Proyecto2EDD/src/proyecto2eddandresimerycarlosgonzalez/Lista.java</file>
-            <file>file:/Users/andresimery/Documents/unimet/abril-julio%202023/estructuras/Proyecto%202/Proyecto2EDD/src/proyecto2eddandresimerycarlosgonzalez/Reserva.java</file>
-            <file>file:/Users/andresimery/Documents/unimet/abril-julio%202023/estructuras/Proyecto%202/Proyecto2EDD/src/proyecto2eddandresimerycarlosgonzalez/ABB.java</file>
-            <file>file:/Users/andresimery/Documents/unimet/abril-julio%202023/estructuras/Proyecto%202/Proyecto2EDD/src/proyecto2eddandresimerycarlosgonzalez/ReservarEstadia.java</file>
-            <file>file:/Users/andresimery/Documents/unimet/abril-julio%202023/estructuras/Proyecto%202/Proyecto2EDD/src/proyecto2eddandresimerycarlosgonzalez/BuscarReserva.java</file>
-            <file>file:/Users/andresimery/Documents/unimet/abril-julio%202023/estructuras/Proyecto%202/Proyecto2EDD/src/proyecto2eddandresimerycarlosgonzalez/HistorialHabitacion.java</file>
-=======
             <file>file:/C:/Users/sgonz/Documents/GitHub%20Desktop/Proyecto2EDD/src/proyecto2eddandresimerycarlosgonzalez/ReservarEstadia.java</file>
             <file>file:/C:/Users/sgonz/Documents/GitHub%20Desktop/Proyecto2EDD/src/proyecto2eddandresimerycarlosgonzalez/VentanaInicio.java</file>
             <file>file:/C:/Users/sgonz/Documents/GitHub%20Desktop/Proyecto2EDD/src/proyecto2eddandresimerycarlosgonzalez/fondorecepcion.jpg</file>
@@ -29,7 +14,6 @@
             <file>file:/C:/Users/sgonz/Documents/GitHub%20Desktop/Proyecto2EDD/src/proyecto2eddandresimerycarlosgonzalez/Habitacion.java</file>
             <file>file:/C:/Users/sgonz/Documents/GitHub%20Desktop/Proyecto2EDD/src/proyecto2eddandresimerycarlosgonzalez/HistorialHabitacion.java</file>
             <file>file:/C:/Users/sgonz/Documents/GitHub%20Desktop/Proyecto2EDD/src/proyecto2eddandresimerycarlosgonzalez/ABB.java</file>
->>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>
