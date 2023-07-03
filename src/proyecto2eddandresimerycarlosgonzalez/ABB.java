@@ -171,6 +171,31 @@ public class ABB<T> {
         return (Habitacion) searchHabitacionNumNodo(aux, num).getElement();
     }
     
+    public NodoArbol searchHabitacionVaciaTipo(NodoArbol<Habitacion> aux, String tipo){
+        
+        if (aux != null) {
+//            Habitacion habitacion = (Habitacion) aux.getElement();
+            if(aux.getElement().getTipo().toLowerCase().equals(tipo) || aux.getElement().getEstado()!=null){
+                System.out.println(aux.getElement().getNum());
+                NodoArbol left = searchHabitacionVaciaTipo(aux.getLeft(),tipo);
+                if (left != null) {
+                    return left;
+                }
+                NodoArbol right = searchHabitacionVaciaTipo(aux.getRight(),tipo);
+                if (right != null) {
+                    return right;
+                }
+                return null;
+            } else {
+                return aux;
+            }
+        } else {
+            return null;
+        }
+    }
+    
+
+
     public int getNodeReservaLevel(NodoArbol<Reserva> aux, Reserva element, int level) {
         if (aux == null) return -1;
         

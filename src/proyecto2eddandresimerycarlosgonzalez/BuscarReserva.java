@@ -56,6 +56,7 @@ public class BuscarReserva extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButtonVolver = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButtonBCheckIn = new javax.swing.JButton();
         jLabelBNombre = new javax.swing.JLabel();
         jLabelBApellido = new javax.swing.JLabel();
         jLabelBEmail = new javax.swing.JLabel();
@@ -64,7 +65,6 @@ public class BuscarReserva extends javax.swing.JFrame {
         jLabelBCelular = new javax.swing.JLabel();
         jLabelBLlegada = new javax.swing.JLabel();
         jLabelBSalida = new javax.swing.JLabel();
-        jComboBoxHabDisp = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -117,6 +117,14 @@ public class BuscarReserva extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, -1, -1));
 
+        jButtonBCheckIn.setText("jButton2");
+        jButtonBCheckIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBCheckInActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonBCheckIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, -1, -1));
+
         jLabelBNombre.setBackground(new java.awt.Color(255, 255, 255));
         jLabelBNombre.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jLabelBNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 340, 20));
@@ -148,13 +156,6 @@ public class BuscarReserva extends javax.swing.JFrame {
         jLabelBSalida.setBackground(new java.awt.Color(255, 255, 255));
         jLabelBSalida.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jLabelBSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 240, 20));
-
-        jComboBoxHabDisp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxHabDispActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jComboBoxHabDisp, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, 100, 30));
 
         jLabel3.setBackground(new java.awt.Color(255, 153, 0));
         jLabel3.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
@@ -195,13 +196,22 @@ public class BuscarReserva extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
-    private void jComboBoxHabDispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxHabDispActionPerformed
-        
-    }//GEN-LAST:event_jComboBoxHabDispActionPerformed
-
     private void jTextFieldCedulaUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCedulaUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCedulaUserActionPerformed
+
+    private void jButtonBCheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBCheckInActionPerformed
+        Reserva reserva = getReserva();
+        NodoArbol<Habitacion> habitacion = getInicio().getArbol_H().searchHabitacionVaciaTipo(getInicio().getArbol_H().getRoot(), reserva.getTipo());
+        Estado estado = new Estado(habitacion.getElement(), reserva.getCliente(),reserva.getLlegada());
+        this.setEstado(estado);
+        getInicio().getHash().addEstado(estado);
+        habitacion.getElement().setEstado(estado);
+        getInicio().getArbol_R().deleteReserva(getInicio().getArbol_R().getRoot(), reserva);
+//      insertar Joption pane con la habitacion que se le asigno a la persona.
+        this.inicio.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonBCheckInActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,8 +250,8 @@ public class BuscarReserva extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonBCheckIn;
     private javax.swing.JButton jButtonVolver;
-    private javax.swing.JComboBox<String> jComboBoxHabDisp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

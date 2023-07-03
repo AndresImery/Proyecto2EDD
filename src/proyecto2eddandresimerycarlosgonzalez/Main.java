@@ -20,6 +20,7 @@ public class Main {
         ABB<Habitacion> arbol_h = new ABB<>();
         ABB<Reserva> arbol_r = new ABB<>();
         Hash hash = new Hash();
+       
         
         
 //        Habitacion habitacion1 = new Habitacion(12, "doble", 2);
