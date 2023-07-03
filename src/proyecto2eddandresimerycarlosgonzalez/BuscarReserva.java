@@ -117,13 +117,16 @@ public class BuscarReserva extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, -1, -1));
 
-        jButtonBCheckIn.setText("jButton2");
+        jButtonBCheckIn.setBackground(new java.awt.Color(0, 0, 0));
+        jButtonBCheckIn.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jButtonBCheckIn.setForeground(new java.awt.Color(255, 153, 0));
+        jButtonBCheckIn.setText("Check-In");
         jButtonBCheckIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBCheckInActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonBCheckIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 340, -1, -1));
+        jPanel1.add(jButtonBCheckIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, -1, -1));
 
         jLabelBNombre.setBackground(new java.awt.Color(255, 255, 255));
         jLabelBNombre.setForeground(new java.awt.Color(0, 0, 0));

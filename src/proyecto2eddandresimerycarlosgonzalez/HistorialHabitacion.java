@@ -58,8 +58,9 @@ public class HistorialHabitacion extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(612, 406));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabelActual.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabelActual.setForeground(new java.awt.Color(255, 153, 0));
-        jLabelActual.setText("jLabelActual");
+        jLabelActual.setText("Cliente Actual:");
         jPanel1.add(jLabelActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 370, 30));
         jPanel1.add(listClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 610, 200));
 

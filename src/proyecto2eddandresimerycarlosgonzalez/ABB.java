@@ -4,6 +4,9 @@
  */
 package proyecto2eddandresimerycarlosgonzalez;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 /**
  *
  * @author Carlo
@@ -481,31 +484,53 @@ public class ABB<T> {
         }
     }
     
-    public String createArbolStringReserva(NodoArbol<Reserva> root, String string) {
-        if (root != null) {
-            string = string + createArbolStringReserva(root.getLeft(), string);
-            Reserva reserva = root.getElement();
-            string = string + reserva.getCliente().getCedula() + "," + reserva.getCliente().getNombre() + "," + reserva.getCliente().getApellido() + "," + reserva.getCliente().getCorreo() + "," + reserva.getCliente().getGenero() + "," + reserva.getTipo() + "," + reserva.getCliente().getCelular() + "," + reserva.getLlegada().getDate() + "/" + reserva.getLlegada().getMonth() + "/" + reserva.getLlegada().getYear() + "," +reserva.getSalida().getDate() + "/" + reserva.getSalida().getMonth() + "/" + reserva.getSalida().getYear() + "\n";
-            string = string + createArbolStringReserva(root.getRight(), string);
+    public void createArbolStringReserva(NodoArbol<Reserva> root, BufferedWriter bufferedWriter) {
+        try {
+            if (root != null) {
+                createArbolStringReserva(root.getLeft(), bufferedWriter);
+                Reserva reserva = root.getElement();
+                String[] data = {String.valueOf(reserva.getCliente().getCedula()), reserva.getCliente().getNombre(), reserva.getCliente().getApellido(), reserva.getCliente().getCorreo(), reserva.getCliente().getGenero(), reserva.getTipo(), reserva.getCliente().getCelular(), reserva.getLlegada().getDate() + "/" + reserva.getLlegada().getMonth() + "/" + reserva.getLlegada().getYear(), reserva.getSalida().getDate() + "/" + reserva.getSalida().getMonth() + "/" + reserva.getSalida().getYear()};
+    //            string = string + reserva.getCliente().getCedula() + "," + reserva.getCliente().getNombre() + "," + reserva.getCliente().getApellido() + "," + reserva.getCliente().getCorreo() + "," + reserva.getCliente().getGenero() + "," + reserva.getTipo() + "," + reserva.getCliente().getCelular() + "," + reserva.getLlegada().getDate() + "/" + reserva.getLlegada().getMonth() + "/" + reserva.getLlegada().getYear() + "," +reserva.getSalida().getDate() + "/" + reserva.getSalida().getMonth() + "/" + reserva.getSalida().getYear() + "\n";
+                String dataLine = String.join(",", data);
+                bufferedWriter.write(dataLine);
+                bufferedWriter.newLine();
+                createArbolStringReserva(root.getRight(), bufferedWriter);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error occurred while writing to the CSV file.");
         }
-        return string;
+
     }
     
-    public String createArbolStringHistorico(NodoArbol<Habitacion> root, String string) {
-        if (root != null) {
-            string = string + createArbolStringHistorico(root.getLeft(), string);
-            Lista<Historico> historicos = root.getElement().getHistoricos();
-            if (historicos != null) {
-                Nodo<Historico> pointer = historicos.getHead();
-                while (pointer != null) {
-                    Historico historico = pointer.getElement();
-                    string = string + historico.getCliente().getCedula() + "," + historico.getCliente().getNombre() + "," + historico.getCliente().getApellido() + "," + historico.getCliente().getCorreo() + "," + historico.getCliente().getGenero() + "," + historico.getLlegada().getDate() + "/" + historico.getLlegada().getMonth() + "/" + historico.getLlegada().getYear() + "," + root.getElement().getNum() + "\n";
-                    pointer = pointer.getNext();
+    public void createArbolStringHistorico(NodoArbol<Habitacion> root, BufferedWriter bufferedWriter) {
+        try {
+            if (root != null) {
+                createArbolStringHistorico(root.getLeft(), bufferedWriter);
+                Lista<Historico> historicos = root.getElement().getHistoricos();
+                if (historicos != null) {
+                    Nodo<Historico> pointer = historicos.getHead();
+                    while (pointer != null) {
+                        Historico historico = pointer.getElement();
+                        String[] data = {String.valueOf(historico.getCliente().getCedula()), historico.getCliente().getNombre(), historico.getCliente().getApellido(), historico.getCliente().getCorreo(), historico.getCliente().getGenero(), historico.getLlegada().getDate() + "/" + historico.getLlegada().getMonth() + "/" + historico.getLlegada().getYear(), String.valueOf(root.getElement().getNum())};
+    //                    string = string + historico.getCliente().getCedula() + "," + historico.getCliente().getNombre() + "," + historico.getCliente().getApellido() + "," + historico.getCliente().getCorreo() + "," + historico.getCliente().getGenero() + "," + historico.getLlegada().getDate() + "/" + historico.getLlegada().getMonth() + "/" + historico.getLlegada().getYear() + "," + root.getElement().getNum() + "\n";
+
+                        String dataLine = String.join(",", data);
+                        bufferedWriter.write(dataLine);
+                        bufferedWriter.newLine();
+                        pointer = pointer.getNext();
+                    }
                 }
+                createArbolStringHistorico(root.getRight(), bufferedWriter);
             }
-            string = string + createArbolStringHistorico(root.getRight(), string);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error occurred while writing to the CSV file.");
         }
-        return string;
+//        return string;
+        
+        
+        
     }
     
 //    public int getNodeLevel(NodoArbol<T> aux, T element, int level) {

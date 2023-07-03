@@ -173,7 +173,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     private void GuardarExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarExitActionPerformed
         Function func = new Function();
 //        func.writeCSVs(getHash(), getArbol_R(), getArbol_H());
-        func.write(hash, arbol_r, arbol_h);
+        func.write(getHash(), getArbol_R(), getArbol_H());
         
         this.dispose();
     }//GEN-LAST:event_GuardarExitActionPerformed

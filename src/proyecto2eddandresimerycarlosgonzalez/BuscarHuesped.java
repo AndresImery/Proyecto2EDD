@@ -63,7 +63,6 @@ public class BuscarHuesped extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButtonVolver = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButtonCheckOut = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -78,14 +77,15 @@ public class BuscarHuesped extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(612, 406));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelNumeroHabitacion.setText("jLabel5");
-        jPanel1.add(jLabelNumeroHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, -1, -1));
+        jLabelNumeroHabitacion.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabelNumeroHabitacion.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jLabelNumeroHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 110, 30));
 
-        jLabelCedula.setText("Ingrese su cédula para hacer checkout.");
-        jPanel1.add(jLabelCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, -1, -1));
-
-        jTextFieldCedula.setText("Cedula");
-        jPanel1.add(jTextFieldCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 100, -1));
+        jLabelCedula.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabelCedula.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelCedula.setText("Ingrese su cédula:");
+        jPanel1.add(jLabelCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, 170, 40));
+        jPanel1.add(jTextFieldCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, 180, -1));
 
         jButtonBuscar.setBackground(new java.awt.Color(0, 0, 0));
         jButtonBuscar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -98,11 +98,13 @@ public class BuscarHuesped extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, -1, 30));
 
-        jLabelGenero.setText("jLabel5");
-        jPanel1.add(jLabelGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
+        jLabelGenero.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabelGenero.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jLabelGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 230, 30));
 
-        jLabelLlegada.setText("jLabel5");
-        jPanel1.add(jLabelLlegada, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, -1));
+        jLabelLlegada.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabelLlegada.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jLabelLlegada, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 180, 30));
 
         jTextFieldApellido.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldApellido.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -116,8 +118,9 @@ public class BuscarHuesped extends javax.swing.JFrame {
         });
         jPanel1.add(jTextFieldApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 110, 30));
 
-        jLabelCorreo.setText("jLabel5");
-        jPanel1.add(jLabelCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, -1));
+        jLabelCorreo.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabelCorreo.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jLabelCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 500, 30));
 
         jTextFieldNombre.setBackground(new java.awt.Color(0, 0, 0));
         jTextFieldNombre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -131,8 +134,9 @@ public class BuscarHuesped extends javax.swing.JFrame {
         });
         jPanel1.add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 110, 30));
 
-        jLabelTelefono.setText("jLabel5");
-        jPanel1.add(jLabelTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, -1, -1));
+        jLabelTelefono.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabelTelefono.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jLabelTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 190, 30));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Cambria", 1, 36)); // NOI18N
@@ -160,12 +164,6 @@ public class BuscarHuesped extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
-
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 153, 0));
-        jButton3.setText("Borrar Cliente");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, -1, -1));
 
         jButtonCheckOut.setBackground(new java.awt.Color(0, 0, 0));
         jButtonCheckOut.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -319,7 +317,6 @@ public class BuscarHuesped extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonCheckOut;
     private javax.swing.JButton jButtonVolver;

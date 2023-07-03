@@ -68,6 +68,9 @@ public class ReservarEstadia extends javax.swing.JFrame {
         jDateChooserLlegada.setDateFormatString("dd/MM/y");
         jPanel1.add(jDateChooserLlegada, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 110, -1));
 
+        jComboBoxTipo.setBackground(new java.awt.Color(0, 0, 0));
+        jComboBoxTipo.setFont(new java.awt.Font("Helvetica Neue", 1, 12)); // NOI18N
+        jComboBoxTipo.setForeground(new java.awt.Color(255, 153, 0));
         jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Simple", "Doble", "Triple", "Suite" }));
         jPanel1.add(jComboBoxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, -1));
         jPanel1.add(jTextFieldCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 180, -1));
@@ -95,14 +98,20 @@ public class ReservarEstadia extends javax.swing.JFrame {
         jPanel1.add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 120, -1));
         jPanel1.add(jTextFieldCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 100, -1));
 
+        jButtonCrearReserva.setBackground(new java.awt.Color(0, 0, 0));
+        jButtonCrearReserva.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jButtonCrearReserva.setForeground(new java.awt.Color(255, 153, 0));
         jButtonCrearReserva.setText("Crear Reserva");
         jButtonCrearReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCrearReservaActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonCrearReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, -1, -1));
+        jPanel1.add(jButtonCrearReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, -1, -1));
 
+        jButtonVolver.setBackground(new java.awt.Color(0, 0, 0));
+        jButtonVolver.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jButtonVolver.setForeground(new java.awt.Color(255, 153, 0));
         jButtonVolver.setText("Volver");
         jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
