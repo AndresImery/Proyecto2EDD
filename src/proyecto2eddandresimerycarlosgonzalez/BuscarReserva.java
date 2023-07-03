@@ -174,11 +174,11 @@ public class BuscarReserva extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Integer cedula = Integer.parseInt(this.jTextFieldCedulaUser.getText());
-        Reserva reserva = getInicio().getArbol_R().searchReservaCedula(getInicio().getArbol_R().getRoot(), cedula);
-        if(reserva == null){
-            //newJoptionpane aqui andres
-        }else{
+        
+        String cedula = this.jTextFieldCedulaUser.getText(); 
+        if (cedula.matches("\\d+")) {
+            Integer cedula_num = Integer.parseInt(this.jTextFieldCedulaUser.getText());
+            Reserva reserva = getInicio().getArbol_R().searchReservaCedula(getInicio().getArbol_R().getRoot(), cedula_num);
             jLabelBNombre.setText(reserva.getCliente().getNombre());
             jLabelBNombre.setText(reserva.getCliente().getNombre());
             jLabelBApellido.setText(reserva.getCliente().getApellido());
@@ -188,7 +188,39 @@ public class BuscarReserva extends javax.swing.JFrame {
             jLabelBLlegada.setText(reserva.getLlegada().getDate() + "/" + reserva.getLlegada().getMonth() + "/" + reserva.getLlegada().getYear());
             jLabelBSalida.setText(reserva.getSalida().getDate() + "/" + reserva.getSalida().getMonth() + "/" + reserva.getSalida().getYear());
             this.setReserva(reserva);
+        } else {
+            new JOptionPane().showMessageDialog(null, "La cédula debe ser unicamente números. (sin \".\")");
+            getInicio().setVisible(true);
+            this.dispose();
         }
+//        try { 
+//            Integer.parseInt(cedula); 
+//            System.out.println(cedula + " is a valid integer");
+//            int num_cedula = Integer.parseInt(cedula);
+//            if (getInicio().getArbol_R().searchReservaCedula(getInicio().getArbol_R().getRoot(), num_cedula )!= null){
+//                reserva = getInicio().getArbol_R().searchReservaCedula(getInicio().getArbol_R().getRoot(), num_cedula);
+//                jLabelBNombre.setText(reserva.getCliente().getNombre());
+//                jLabelBNombre.setText(reserva.getCliente().getNombre());
+//                jLabelBApellido.setText(reserva.getCliente().getApellido());
+//                jLabelBEmail.setText(reserva.getCliente().getCorreo());
+//                jLabelBGenero.setText(reserva.getCliente().getGenero());
+//                jLabelBCelular.setText(reserva.getCliente().getCelular());
+//                jLabelBLlegada.setText(reserva.getLlegada().getDate() + "/" + reserva.getLlegada().getMonth() + "/" + reserva.getLlegada().getYear());
+//                jLabelBSalida.setText(reserva.getSalida().getDate() + "/" + reserva.getSalida().getMonth() + "/" + reserva.getSalida().getYear());
+//                this.setReserva(reserva);
+//            }else{
+//                JOptionPane.showMessageDialog(null, "Ïngrese de nuevo la cedula");
+//            }
+//            
+//            
+//            
+//        }catch (NumberFormatException e){
+//            
+//            System.out.println(cedula + " is not a valid integer"); 
+//            
+//        } 
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
