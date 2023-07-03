@@ -179,15 +179,19 @@ public class BuscarReserva extends javax.swing.JFrame {
         if (cedula.matches("\\d+")) {
             Integer cedula_num = Integer.parseInt(this.jTextFieldCedulaUser.getText());
             Reserva reserva = getInicio().getArbol_R().searchReservaCedula(getInicio().getArbol_R().getRoot(), cedula_num);
-            jLabelBNombre.setText(reserva.getCliente().getNombre());
-            jLabelBNombre.setText(reserva.getCliente().getNombre());
-            jLabelBApellido.setText(reserva.getCliente().getApellido());
-            jLabelBEmail.setText(reserva.getCliente().getCorreo());
-            jLabelBGenero.setText(reserva.getCliente().getGenero());
-            jLabelBCelular.setText(reserva.getCliente().getCelular());
-            jLabelBLlegada.setText(reserva.getLlegada().getDate() + "/" + reserva.getLlegada().getMonth() + "/" + reserva.getLlegada().getYear());
-            jLabelBSalida.setText(reserva.getSalida().getDate() + "/" + reserva.getSalida().getMonth() + "/" + reserva.getSalida().getYear());
-            this.setReserva(reserva);
+            if (reserva != null) {
+                jLabelBNombre.setText(reserva.getCliente().getNombre());
+                jLabelBNombre.setText(reserva.getCliente().getNombre());
+                jLabelBApellido.setText(reserva.getCliente().getApellido());
+                jLabelBEmail.setText(reserva.getCliente().getCorreo());
+                jLabelBGenero.setText(reserva.getCliente().getGenero());
+                jLabelBCelular.setText(reserva.getCliente().getCelular());
+                jLabelBLlegada.setText(reserva.getLlegada().getDate() + "/" + reserva.getLlegada().getMonth() + "/" + reserva.getLlegada().getYear());
+                jLabelBSalida.setText(reserva.getSalida().getDate() + "/" + reserva.getSalida().getMonth() + "/" + reserva.getSalida().getYear());
+                this.setReserva(reserva);
+            } else {
+                new JOptionPane().showMessageDialog(null, "La cedula que ha ingresado no tiene una reserva.");
+            }   
         } else {
             new JOptionPane().showMessageDialog(null, "La cédula debe ser unicamente números. (sin \".\")");
             getInicio().setVisible(true);
@@ -239,8 +243,10 @@ public class BuscarReserva extends javax.swing.JFrame {
         this.setEstado(estado);
         getInicio().getHash().addEstado(estado);
         habitacion.getElement().setEstado(estado);
-        getInicio().getArbol_R().deleteReserva(getInicio().getArbol_R().getRoot(), reserva);
+        
+        getInicio().getArbol_R().deleteReserva2(getInicio().getArbol_R().getRoot(), reserva);
 //      insertar Joption pane con la habitacion que se le asigno a la persona.
+        new JOptionPane().showMessageDialog(null, "El cliente ha sido hospedado exitosamente en la habitacion #" + habitacion.getElement().getNum());
         this.inicio.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonBCheckInActionPerformed

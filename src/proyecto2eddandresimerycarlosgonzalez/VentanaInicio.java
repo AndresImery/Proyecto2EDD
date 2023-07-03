@@ -134,6 +134,11 @@ public class VentanaInicio extends javax.swing.JFrame {
         GuardarExit.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         GuardarExit.setForeground(new java.awt.Color(0, 0, 0));
         GuardarExit.setText("Guardar y Salir");
+        GuardarExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarExitActionPerformed(evt);
+            }
+        });
         jPanel1.add(GuardarExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
 
         FondoRecepcion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -164,6 +169,14 @@ public class VentanaInicio extends javax.swing.JFrame {
         new ReservarEstadia(this);
         setVisible(false);
     }//GEN-LAST:event_CrearReservaActionPerformed
+
+    private void GuardarExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarExitActionPerformed
+        Function func = new Function();
+//        func.writeCSVs(getHash(), getArbol_R(), getArbol_H());
+        func.write(hash, arbol_r, arbol_h);
+        
+        this.dispose();
+    }//GEN-LAST:event_GuardarExitActionPerformed
 
     /**
      * @param args the command line arguments

@@ -126,7 +126,7 @@ public class ABB<T> {
         }
     }
     
-    public NodoArbol searchReservaCedulaNodo(NodoArbol<Reserva> aux, int cedula) {
+    public NodoArbol<Reserva> searchReservaCedulaNodo(NodoArbol<Reserva> aux, int cedula) {
         if (aux == null) return null;
         
         if (aux.getElement().getId() == cedula) {
@@ -139,7 +139,13 @@ public class ABB<T> {
     }
     
     public Reserva searchReservaCedula(NodoArbol<Reserva> aux, int cedula) {
-        return (Reserva) searchReservaCedulaNodo(aux, cedula).getElement();
+        NodoArbol<Reserva> nodo = searchReservaCedulaNodo(aux, cedula);
+        if (nodo != null) {
+            return nodo.getElement();
+        } else {
+            return null;
+        }
+//        return (Reserva) searchReservaCedulaNodo(aux, cedula).getElement();
     }
     
     ///////////////////////abajo
@@ -175,7 +181,7 @@ public class ABB<T> {
         
         if (aux != null) {
 //            Habitacion habitacion = (Habitacion) aux.getElement();
-            if(aux.getElement().getTipo().toLowerCase().equals(tipo) || aux.getElement().getEstado()!=null){
+            if(!aux.getElement().getTipo().toLowerCase().equals(tipo) || aux.getElement().getEstado()!=null){
                 System.out.println(aux.getElement().getNum());
                 NodoArbol left = searchHabitacionVaciaTipo(aux.getLeft(),tipo);
                 if (left != null) {
@@ -260,7 +266,7 @@ public class ABB<T> {
     }
 
     public NodoArbol deleteReserva(NodoArbol<Reserva> p, Reserva element) {
-        if (this.root != null && p.getElement().getId() == element.getId()) {
+        if (p != null && p.getElement().getId() == element.getId()) {
             return deleteRoot();
         } else if (p.getLeft() != null && p.getLeft().getElement().getId() == element.getId()) {
             return deleteReservaLeft(p);
@@ -269,6 +275,11 @@ public class ABB<T> {
         }
         return null;
     }
+    
+//    public NodoArbol<Reserva> deleteReserva2(NodoArbol<Reserva> root, Reserva reserva) {
+//        if (root)
+//    }
+    
     public NodoArbol deleteReservaLeft(NodoArbol<Reserva> p) {
         if (p.getLeft() != null) {
             NodoArbol<Reserva> aux = p.getLeft();
@@ -280,6 +291,7 @@ public class ABB<T> {
                     aux2 = aux2.getRight();
                 }
                 aux2.setRight(aux.getRight());
+//                p.setLeft()
             } else if (aux.getLeft() != null) {
                 p.setLeft(aux.getLeft());
             } else if (aux.getRight() != null) {
@@ -311,6 +323,38 @@ public class ABB<T> {
             return aux;
         }
         return null;
+    }
+    
+    public NodoArbol<Reserva> deleteReserva2(NodoArbol<Reserva> root, Reserva reserva) {
+        if (root == null) {
+            return root;
+        }
+        
+        if (reserva.getId() < root.getElement().getId()) {
+            root.setLeft(deleteReserva2(root.getLeft(), reserva));
+        } else if (reserva.getId() > root.getElement().getId()) {
+            root.setRight(deleteReserva2(root.getRight(), reserva));
+        } else {
+            if (root.getLeft() == null) {
+                return root.getRight();
+            } else if (root.getRight() == null) {
+                return root.getLeft();
+            }
+            
+            root.setElement(inOrderSuccessor(root.getRight()));
+            root.setRight(deleteReserva2(root.getRight(), reserva));
+        }
+        
+        return root;
+    }
+    
+    public Reserva inOrderSuccessor(NodoArbol<Reserva> root) {
+        Reserva minimum = root.getElement();
+        while (root.getLeft() != null) {
+            minimum = root.getLeft().getElement();
+            root = root.getLeft();
+        }
+        return minimum;
     }
     
     
