@@ -412,6 +412,33 @@ public class ABB<T> {
         }
     }
     
+    public String createArbolStringReserva(NodoArbol<Reserva> root, String string) {
+        if (root != null) {
+            string = string + createArbolStringReserva(root.getLeft(), string);
+            Reserva reserva = root.getElement();
+            string = string + reserva.getCliente().getCedula() + "," + reserva.getCliente().getNombre() + "," + reserva.getCliente().getApellido() + "," + reserva.getCliente().getCorreo() + "," + reserva.getCliente().getGenero() + "," + reserva.getTipo() + "," + reserva.getCliente().getCelular() + "," + reserva.getLlegada().getDate() + "/" + reserva.getLlegada().getMonth() + "/" + reserva.getLlegada().getYear() + "," +reserva.getSalida().getDate() + "/" + reserva.getSalida().getMonth() + "/" + reserva.getSalida().getYear() + "\n";
+            string = string + createArbolStringReserva(root.getRight(), string);
+        }
+        return string;
+    }
+    
+    public String createArbolStringHistorico(NodoArbol<Habitacion> root, String string) {
+        if (root != null) {
+            string = string + createArbolStringHistorico(root.getLeft(), string);
+            Lista<Historico> historicos = root.getElement().getHistoricos();
+            if (historicos != null) {
+                Nodo<Historico> pointer = historicos.getHead();
+                while (pointer != null) {
+                    Historico historico = pointer.getElement();
+                    string = string + historico.getCliente().getCedula() + "," + historico.getCliente().getNombre() + "," + historico.getCliente().getApellido() + "," + historico.getCliente().getCorreo() + "," + historico.getCliente().getGenero() + "," + historico.getLlegada().getDate() + "/" + historico.getLlegada().getMonth() + "/" + historico.getLlegada().getYear() + "," + root.getElement().getNum() + "\n";
+                    pointer = pointer.getNext();
+                }
+            }
+            string = string + createArbolStringHistorico(root.getRight(), string);
+        }
+        return string;
+    }
+    
 //    public int getNodeLevel(NodoArbol<T> aux, T element, int level) {
 //        if (aux == null) return -1;
 //        

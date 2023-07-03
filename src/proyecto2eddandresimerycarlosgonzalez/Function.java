@@ -5,6 +5,7 @@
 package proyecto2eddandresimerycarlosgonzalez;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Scanner;
@@ -177,35 +178,69 @@ public class Function {
 
     }
     
-//    public ABB<Reserva> readCSVReservas() {
-//        try {
-//            File myObj;
-//            myObj = new File("csv/habitaciones.csv");
-////            if (file == null) {
-////                myObj = new File("csv/habitaciones.csv");
-////            } else {
-////                myObj = file;
-////
-////            }
-//            if (myObj.createNewFile()) {
-//                System.out.println("File created: " + myObj.getName());
-//            } else {
-//                System.out.println("File already exists.");
-//                Scanner myReader = new Scanner(myObj);
-//                while (myReader.hasNextLine()) {
-//                    String data = myReader.nextLine();
-//                    // Aqui crear arbol
-//                    
-//                }
-//            }
-//        } catch (IOException e) {
-//            System.out.println("An error occurred.");
-//            e.printStackTrace();
-//        }
-//    }
-//    
-//    public Hash readCSVEstado() {
-//        //
-//    }
-//    
+    public void writeCSVs(Hash hash, ABB<Reserva> arbol_r, ABB<Habitacion> arbol_h) {
+        
+        String string_estado = "num_hab,primer_nombre,apellido,email,genero,celular,llegada\n";
+        
+        String string_reservas = "ci,primer_nombre,segundo_nombre,email,genero,tipo_hab,celular,llegada,salida\n";
+        
+        String string_historicos = "ci,primer_nombre,apellido,email,genero,llegada,num_hab\n";
+        
+        for (Lista<Estado> lista : hash.getHashtable()) {
+            if (lista !=  null) {
+                Nodo<Estado> pointer = lista.getHead();
+                while (pointer != null) {
+                    Estado estado = pointer.getElement();
+                    string_estado = string_estado + "" + estado.getHabitacion().getNum() + "," + estado.getCliente().getNombre() + "," + estado.getCliente().getApellido() + "," + estado.getCliente().getCorreo() + "," + estado.getCliente().getGenero() + "," + estado.getCliente().getCelular() + "," + estado.getLlegada().getDate() + "/" + estado.getLlegada().getMonth() + "/" + estado.getLlegada().getYear() + "\n";
+                    pointer = pointer.getNext();
+                }
+            }
+        }
+        
+        string_reservas = string_reservas + arbol_r.createArbolStringReserva(arbol_r.getRoot(), "");
+        
+        string_historicos = string_historicos + arbol_h.createArbolStringHistorico(arbol_h.getRoot(), "");
+        
+        
+        
+        
+//        System.out.println(string);
+        
+        try {
+            FileWriter myWriter = new FileWriter("reservas.csv");
+            
+            myWriter.write(string_reservas);
+            myWriter.close();
+            System.out.println("Escribio exitosamente en el archivo.");
+        } catch (IOException e) {
+            System.out.println("Ocurrio un error.");
+            e.printStackTrace();
+        }
+        
+        try {
+            FileWriter myWriter = new FileWriter("estado.csv");
+            
+            myWriter.write(string_estado);
+            myWriter.close();
+            System.out.println("Escribio exitosamente en el archivo.");
+        } catch (IOException e) {
+            System.out.println("Ocurrio un error.");
+            e.printStackTrace();
+        }
+        
+       try {
+            FileWriter myWriter = new FileWriter("historico.csv");
+            
+            myWriter.write(string_historicos);
+            myWriter.close();
+            System.out.println("Escribio exitosamente en el archivo.");
+        } catch (IOException e) {
+            System.out.println("Ocurrio un error.");
+            e.printStackTrace();
+        }
+        
+    }
+    
 }
+
+
