@@ -4,6 +4,9 @@
  */
 package proyecto2eddandresimerycarlosgonzalez;
 
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Carlo
@@ -19,6 +22,10 @@ public class ReservarEstadia extends javax.swing.JFrame {
         setVisible(true);
         this.inicio = inicio;
     }
+    
+    public VentanaInicio getInicio() {
+        return this.inicio;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,10 +37,10 @@ public class ReservarEstadia extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField7 = new javax.swing.JTextField();
+        jDateChooserSalida = new com.toedter.calendar.JDateChooser();
+        jDateChooserLlegada = new com.toedter.calendar.JDateChooser();
+        jComboBoxTipo = new javax.swing.JComboBox<>();
+        jTextFieldCelular = new javax.swing.JTextField();
         jTextFieldGenero = new javax.swing.JTextField();
         jTextFieldCorreo = new javax.swing.JTextField();
         jTextFieldApellido = new javax.swing.JTextField();
@@ -54,13 +61,29 @@ public class ReservarEstadia extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(612, 406));
         jPanel1.setPreferredSize(new java.awt.Dimension(612, 406));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, -1, -1));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Simple", "Doble", "Triple", "Suite" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, -1));
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 180, -1));
+        jDateChooserSalida.setDateFormatString("dd/MM/y");
+        jPanel1.add(jDateChooserSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, 120, -1));
+
+        jDateChooserLlegada.setDateFormatString("dd/MM/y");
+        jPanel1.add(jDateChooserLlegada, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 110, -1));
+
+        jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Simple", "Doble", "Triple", "Suite" }));
+        jPanel1.add(jComboBoxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, -1));
+        jPanel1.add(jTextFieldCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 180, -1));
+
+        jTextFieldGenero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldGeneroActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTextFieldGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 100, -1));
+
+        jTextFieldCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCorreoActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTextFieldCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 430, -1));
         jPanel1.add(jTextFieldApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 140, -1));
 
@@ -73,6 +96,11 @@ public class ReservarEstadia extends javax.swing.JFrame {
         jPanel1.add(jTextFieldCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 100, -1));
 
         jButtonCrearReserva.setText("Crear Reserva");
+        jButtonCrearReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCrearReservaActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonCrearReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, -1, -1));
 
         jButtonVolver.setText("Volver");
@@ -115,6 +143,35 @@ public class ReservarEstadia extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
+    private void jTextFieldCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCorreoActionPerformed
+
+    private void jTextFieldGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldGeneroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldGeneroActionPerformed
+
+    private void jButtonCrearReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearReservaActionPerformed
+        String cedula_string = this.jTextFieldCedula.getText();
+        if (cedula_string.matches("\\d+")) {
+            Integer cedula = Integer.parseInt(this.jTextFieldCedula.getText());
+            Cliente cliente = new Cliente(cedula, this.jTextFieldNombre.getText(), this.jTextFieldApellido.getText(), this.jTextFieldCorreo.getText(), this.jTextFieldCelular.getText(), this.jTextFieldGenero.getText());
+            Date llegada = this.jDateChooserLlegada.getDate();
+            Date salida = this.jDateChooserSalida.getDate();
+            Reserva reserva = new Reserva(cliente, this.jComboBoxTipo.getSelectedItem().toString().toLowerCase(), llegada, salida);
+            getInicio().getArbol_R().insertReserva(getInicio().getArbol_R().getRoot(), reserva);
+            new JOptionPane().showMessageDialog(null, "La reserva ha sido creada exitosamente.");
+            getInicio().setVisible(true);
+            this.dispose();
+        } else {
+            new JOptionPane().showMessageDialog(null, "La cédula debe ser unicamente números. (sin \".\")");
+            getInicio().setVisible(true);
+            this.dispose();
+        }
+        
+        
+    }//GEN-LAST:event_jButtonCrearReservaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -153,16 +210,16 @@ public class ReservarEstadia extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCrearReserva;
     private javax.swing.JButton jButtonVolver;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JComboBox<String> jComboBoxTipo;
+    private com.toedter.calendar.JDateChooser jDateChooserLlegada;
+    private com.toedter.calendar.JDateChooser jDateChooserSalida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextFieldApellido;
     private javax.swing.JTextField jTextFieldCedula;
+    private javax.swing.JTextField jTextFieldCelular;
     private javax.swing.JTextField jTextFieldCorreo;
     private javax.swing.JTextField jTextFieldGenero;
     private javax.swing.JTextField jTextFieldNombre;
